@@ -1,0 +1,443 @@
+
+
+Microchip MPLAB XC8 Assembler V2.10 build 88905656 
+                                                                                               Sun Nov 15 20:14:33 2020
+
+Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
+     1                           	processor	18F45K50
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	flic
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     8                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     9                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    11                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    12                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    13  0000                     
+    14                           ; Version 2.10
+    15                           ; Generated 31/07/2019 GMT
+    16                           ; 
+    17                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    18                           ; All rights reserved.
+    19                           ; 
+    20                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    21                           ; 
+    22                           ; Redistribution and use in source and binary forms, with or without modification, are
+    23                           ; permitted provided that the following conditions are met:
+    24                           ; 
+    25                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    26                           ;        conditions and the following disclaimer.
+    27                           ; 
+    28                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    29                           ;        of conditions and the following disclaimer in the documentation and/or other
+    30                           ;        materials provided with the distribution.
+    31                           ; 
+    32                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    33                           ;        software without specific prior written permission.
+    34                           ; 
+    35                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    36                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    37                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    38                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    39                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    40                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    41                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    42                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    43                           ; 
+    44                           ; 
+    45                           ; Code-generator required, PIC18F45K50 Definitions
+    46                           ; 
+    47                           ; SFR Addresses
+    48  0000                     
+    49                           	psect	idataCOMRAM
+    50  007FA6                     __pidataCOMRAM:
+    51                           	opt callstack 0
+    52                           
+    53                           ;initializer for _key_vals
+    54  007FA6  01                 	db	1
+    55  007FA7  02                 	db	2
+    56  007FA8  03                 	db	3
+    57  007FA9  0A                 	db	10
+    58  007FAA  04                 	db	4
+    59  007FAB  05                 	db	5
+    60  007FAC  06                 	db	6
+    61  007FAD  0B                 	db	11
+    62  007FAE  07                 	db	7
+    63  007FAF  08                 	db	8
+    64  007FB0  09                 	db	9
+    65  007FB1  0C                 	db	12
+    66  007FB2  0E                 	db	14
+    67  007FB3  00                 	db	0
+    68  007FB4  0F                 	db	15
+    69  007FB5  0D                 	db	13
+    70  0000                     _ANSELD	set	3934
+    71  0000                     _ANSELC	set	3933
+    72  0000                     _ANSELB	set	3932
+    73  0000                     _ANSELA	set	3931
+    74  0000                     _TRISD	set	3989
+    75  0000                     _TRISC	set	3988
+    76  0000                     _TRISB	set	3987
+    77  0000                     _TRISA	set	3986
+    78  0000                     _LATD	set	3980
+    79                           
+    80                           ; #config settings
+    81  0000                     
+    82                           	psect	cinit
+    83  007FDA                     __pcinit:
+    84                           	opt callstack 0
+    85  007FDA                     start_initialization:
+    86                           	opt callstack 0
+    87  007FDA                     __initialization:
+    88                           	opt callstack 0
+    89                           
+    90                           ; Initialize objects allocated to COMRAM (16 bytes)
+    91                           ; load TBLPTR registers with __pidataCOMRAM
+    92  007FDA  0EA6               	movlw	low __pidataCOMRAM
+    93  007FDC  6EF6               	movwf	tblptrl,c
+    94  007FDE  0E7F               	movlw	high __pidataCOMRAM
+    95  007FE0  6EF7               	movwf	tblptrh,c
+    96  007FE2  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+    97  007FE4  6EF8               	movwf	tblptru,c
+    98  007FE6  EE00  F001         	lfsr	0,__pdataCOMRAM
+    99  007FEA  EE10 F010          	lfsr	1,16
+   100  007FEE                     copy_data0:
+   101  007FEE  0009               	tblrd		*+
+   102  007FF0  CFF5 FFEE          	movff	tablat,postinc0
+   103  007FF4  50E5               	movf	postdec1,w,c
+   104  007FF6  50E1               	movf	fsr1l,w,c
+   105  007FF8  E1FA               	bnz	copy_data0
+   106  007FFA                     end_of_initialization:
+   107                           	opt callstack 0
+   108  007FFA                     __end_of__initialization:
+   109                           	opt callstack 0
+   110  007FFA  0100               	movlb	0
+   111  007FFC  EFCD  F03F         	goto	_main	;jump to C main() function
+   112                           
+   113                           	psect	dataCOMRAM
+   114  000001                     __pdataCOMRAM:
+   115                           	opt callstack 0
+   116  000001                     	ds	16
+   117                           
+   118                           	psect	cstackCOMRAM
+   119  000000                     __pcstackCOMRAM:
+   120                           	opt callstack 0
+   121  000000                     
+   122                           ; 1 bytes @ 0x0
+   123 ;;
+   124 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   125 ;;
+   126 ;; *************** function _main *****************
+   127 ;; Defined at:
+   128 ;;		line 25 in file "main.c"
+   129 ;; Parameters:    Size  Location     Type
+   130 ;;		None
+   131 ;; Auto vars:     Size  Location     Type
+   132 ;;		None
+   133 ;; Return value:  Size  Location     Type
+   134 ;;                  1    wreg      void 
+   135 ;; Registers used:
+   136 ;;		wreg, status,2, cstack
+   137 ;; Tracked objects:
+   138 ;;		On entry : 0/0
+   139 ;;		On exit  : 0/0
+   140 ;;		Unchanged: 0/0
+   141 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   142 ;;      Params:         0       0       0       0       0       0       0       0       0
+   143 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   144 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   145 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   146 ;;Total ram usage:        0 bytes
+   147 ;; Hardware stack levels required when called:    1
+   148 ;; This function calls:
+   149 ;;		_ports_init
+   150 ;; This function is called by:
+   151 ;;		Startup code after reset
+   152 ;; This function uses a non-reentrant model
+   153 ;;
+   154                           
+   155                           	psect	text0
+   156  007F9A                     __ptext0:
+   157                           	opt callstack 0
+   158  007F9A                     _main:
+   159                           	opt callstack 30
+   160  007F9A                     
+   161                           ;main.c: 26:     ports_init();
+   162  007F9A  ECDB  F03F         	call	_ports_init	;wreg free
+   163  007F9E                     
+   164                           ;main.c: 28:     LATD = 0b10101010;
+   165  007F9E  0EAA               	movlw	170
+   166  007FA0  6E8C               	movwf	140,c	;volatile
+   167  007FA2  EF00  F000         	goto	start
+   168  007FA6                     __end_of_main:
+   169                           	opt callstack 0
+   170                           
+   171 ;; *************** function _ports_init *****************
+   172 ;; Defined at:
+   173 ;;		line 31 in file "main.c"
+   174 ;; Parameters:    Size  Location     Type
+   175 ;;		None
+   176 ;; Auto vars:     Size  Location     Type
+   177 ;;		None
+   178 ;; Return value:  Size  Location     Type
+   179 ;;                  1    wreg      void 
+   180 ;; Registers used:
+   181 ;;		wreg, status,2
+   182 ;; Tracked objects:
+   183 ;;		On entry : 0/0
+   184 ;;		On exit  : 0/0
+   185 ;;		Unchanged: 0/0
+   186 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   187 ;;      Params:         0       0       0       0       0       0       0       0       0
+   188 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   189 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   190 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   191 ;;Total ram usage:        0 bytes
+   192 ;; Hardware stack levels used:    1
+   193 ;; This function calls:
+   194 ;;		Nothing
+   195 ;; This function is called by:
+   196 ;;		_main
+   197 ;; This function uses a non-reentrant model
+   198 ;;
+   199                           
+   200                           	psect	text1
+   201  007FB6                     __ptext1:
+   202                           	opt callstack 0
+   203  007FB6                     _ports_init:
+   204                           	opt callstack 30
+   205  007FB6                     
+   206                           ;main.c: 32:     ANSELA = 0;
+   207  007FB6  0E00               	movlw	0
+   208  007FB8  010F               	movlb	15	; () banked
+   209  007FBA  6F5B               	movwf	91,b	;volatile
+   210                           
+   211                           ;main.c: 33:     TRISA = 0;
+   212  007FBC  0E00               	movlw	0
+   213  007FBE  6E92               	movwf	146,c	;volatile
+   214                           
+   215                           ;main.c: 35:     ANSELB = 0;
+   216  007FC0  0E00               	movlw	0
+   217  007FC2  6F5C               	movwf	92,b	;volatile
+   218                           
+   219                           ;main.c: 36:     TRISB = 0b00001111;
+   220  007FC4  0E0F               	movlw	15
+   221  007FC6  6E93               	movwf	147,c	;volatile
+   222                           
+   223                           ;main.c: 38:     ANSELC = 0;
+   224  007FC8  0E00               	movlw	0
+   225  007FCA  6F5D               	movwf	93,b	;volatile
+   226                           
+   227                           ;main.c: 39:     TRISC = 0;
+   228  007FCC  0E00               	movlw	0
+   229  007FCE  6E94               	movwf	148,c	;volatile
+   230                           
+   231                           ;main.c: 41:     ANSELD = 0;
+   232  007FD0  0E00               	movlw	0
+   233  007FD2  6F5E               	movwf	94,b	;volatile
+   234                           
+   235                           ;main.c: 42:     TRISD = 0;
+   236  007FD4  0E00               	movlw	0
+   237  007FD6  6E95               	movwf	149,c	;volatile
+   238  007FD8                     
+   239                           ; BSR set to: 15
+   240  007FD8  0012               	return		;funcret
+   241  007FDA                     __end_of_ports_init:
+   242                           	opt callstack 0
+   243  0000                     
+   244                           	psect	rparam
+   245  0000                     tosu	equ	0xFFF
+   246                           tosh	equ	0xFFE
+   247                           tosl	equ	0xFFD
+   248                           stkptr	equ	0xFFC
+   249                           pclatu	equ	0xFFB
+   250                           pclath	equ	0xFFA
+   251                           pcl	equ	0xFF9
+   252                           tblptru	equ	0xFF8
+   253                           tblptrh	equ	0xFF7
+   254                           tblptrl	equ	0xFF6
+   255                           tablat	equ	0xFF5
+   256                           prodh	equ	0xFF4
+   257                           prodl	equ	0xFF3
+   258                           indf0	equ	0xFEF
+   259                           postinc0	equ	0xFEE
+   260                           postdec0	equ	0xFED
+   261                           preinc0	equ	0xFEC
+   262                           plusw0	equ	0xFEB
+   263                           fsr0h	equ	0xFEA
+   264                           fsr0l	equ	0xFE9
+   265                           wreg	equ	0xFE8
+   266                           indf1	equ	0xFE7
+   267                           postinc1	equ	0xFE6
+   268                           postdec1	equ	0xFE5
+   269                           preinc1	equ	0xFE4
+   270                           plusw1	equ	0xFE3
+   271                           fsr1h	equ	0xFE2
+   272                           fsr1l	equ	0xFE1
+   273                           bsr	equ	0xFE0
+   274                           indf2	equ	0xFDF
+   275                           postinc2	equ	0xFDE
+   276                           postdec2	equ	0xFDD
+   277                           preinc2	equ	0xFDC
+   278                           plusw2	equ	0xFDB
+   279                           fsr2h	equ	0xFDA
+   280                           fsr2l	equ	0xFD9
+   281                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        16
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      0      16
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+                         _ports_init
+ ---------------------------------------------------------------------------------
+ (1) _ports_init                                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _ports_init
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             7FF      0       0      21        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK7           100      0       0      19        0.0%
+BANK7              100      0       0      20        0.0%
+BITBANK6           100      0       0      17        0.0%
+BANK6              100      0       0      18        0.0%
+BITBANK5           100      0       0      15        0.0%
+BANK5              100      0       0      16        0.0%
+BITBANK4           100      0       0      13        0.0%
+BANK4              100      0       0      14        0.0%
+BITBANK3           100      0       0      11        0.0%
+BANK3              100      0       0      12        0.0%
+BITBANK2           100      0       0       9        0.0%
+BANK2              100      0       0      10        0.0%
+BITBANK1           100      0       0       7        0.0%
+BANK1              100      0       0       8        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITCOMRAM           5F      0       0       0        0.0%
+COMRAM              5F      0      10       1       16.8%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      10       6        0.0%
+DATA                 0      0      10       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
+Symbol Table                                                                                   Sun Nov 15 20:14:33 2020
+
+                     l30 7FD8                       l27 7FA2             __CFG_CP0$OFF 000000  
+           __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000  
+            __CFG_LVP$ON 000000                      l710 7F9E                      l706 7FB6  
+                    l708 7F9A             __CFG_CPB$OFF 000000             __CFG_CPD$OFF 000000  
+                   _LATD 000F8C                     _main 7F9A                     fsr1l 000FE1  
+          __CFG_BORV$190 000000                     start 0000            __CFG_IESO$OFF 000000  
+          __CFG_MCLRE$ON 000000             ___param_bank 000000                    ?_main 0000  
+          __CFG_WDTEN$ON 000000                    _TRISA 000F92                    _TRISB 000F93  
+                  _TRISC 000F94                    _TRISD 000F95            __CFG_WRT0$OFF 000000  
+          __CFG_WRT1$OFF 000000            __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000  
+         __CFG_EBTR0$OFF 000000           __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000  
+         __CFG_EBTR2$OFF 000000           __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000  
+          __CFG_WRTC$OFF 000000            __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000  
+                  tablat 000FF5           __CFG_T3CMX$RC0 000000           __CFG_ICPRT$OFF 000000  
+         __CFG_PBADEN$ON 000000          __initialization 7FDA             __end_of_main 7FA6  
+         __CFG_PCLKEN$ON 000000                   ??_main 0000            __activetblptr 000000  
+         __CFG_SDOMX$RB3 000000          __CFG_CCP2MX$RC1 000000                   _ANSELA 000F5B  
+                 _ANSELB 000F5C                   _ANSELC 000F5D                   _ANSELD 000F5E  
+         __CFG_XINST$OFF 000000           __CFG_STVREN$ON 000000             __pdataCOMRAM 0001  
+                 tblptrh 000FF7                   tblptrl 000FF6                   tblptru 000FF8  
+        __CFG_FOSC$ECHIO 000000     __CFG_LS48MHZ$SYS24X4 000000               __accesstop 0060  
+__end_of__initialization 7FFA            ___rparam_used 000001           __pcstackCOMRAM 0000  
+       __CFG_nPWRTEN$OFF 000000        __CFG_PLLSEL$PLL4X 000000                  __Hparam 0000  
+                __Lparam 0000                  __pcinit 7FDA                  __ramtop 0800  
+                __ptext0 7F9A                  __ptext1 7FB6     end_of_initialization 7FFA  
+                postdec1 000FE5                  postinc0 000FEE               _ports_init 7FB6  
+          __pidataCOMRAM 7FA6      start_initialization 7FDA          __CFG_nLPBOR$OFF 000000  
+            ?_ports_init 0000         __CFG_WDTPS$32768 000000      __size_of_ports_init 0024  
+      __CFG_CFGPLLEN$OFF 000000                copy_data0 7FEE                 __Hrparam 0000  
+               __Lrparam 0000       __CFG_BOREN$SBORDIS 000000            __size_of_main 000C  
+               _key_vals 0001             ??_ports_init 0000     __CFG_CPUDIV$NOCLKDIV 000000  
+     __end_of_ports_init 7FDA  
