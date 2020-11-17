@@ -23,7 +23,7 @@ enum exponent {bbase=2, limit=8};
 
 // Prototype functions
 void ports_init(void);
-
+void printResult(long int result);
 
 void main(void) {
     static char key_vals[4][4] = {{1, 2, 3, 10}, {4, 5, 6, 11}, {7, 8, 9, 12}, 
