@@ -8280,7 +8280,7 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 15 "./lcd.h" 2
-# 30 "./lcd.h"
+# 31 "./lcd.h"
 void LCD_init(void);
 void LCD_clear(void);
 void LCD_returnHome(void);
@@ -8288,20 +8288,18 @@ void LCD_entryMode(int dir, int shift);
 void LCD_dispControl(int disp, int cursor, int blink);
 void LCD_cursor(int setCursor, int direction);
 void LCD_functionSet(int DL, int N, int F);
+void LCD_newLine();
 void LCD_cmd(char cmd);
 void LCD_rdy(void);
-void LCD_write(char data[]);
+void LCD_writeStr(char data[]);
+void LCD_writeChar(char data);
 
 
 void LCD_init(void) {
-    TRISCbits.TRISC0=0;
-    TRISCbits.TRISC2=0;
-    TRISCbits.TRISC1=0;
-    LATC = 0;
     LCD_clear();
-    LCD_functionSet(1,0,0);
-    LCD_dispControl(1,1,0);
-    LCD_cursor(1, 1);
+    LCD_functionSet(1, 1, 0);
+    LCD_dispControl(1, 1, 1);
+    LCD_entryMode(1, 0);
 }
 
 void LCD_clear(void) {
@@ -8326,6 +8324,10 @@ void LCD_cursor(int SC, int RL) {
 
 void LCD_functionSet(int DL, int N, int F) {
     LCD_cmd(0b00100000 | DL << 4 | N << 3 | F << 2);
+}
+
+void LCD_newLine() {
+    LCD_cmd(0xC0);
 }
 
 void LCD_cmd (char cmd) {
@@ -8359,7 +8361,7 @@ void LCD_rdy (void) {
     TRISB = 0b00000000;
 }
 
-void LCD_write(char data[]) {
+void LCD_writeStr(char data[]) {
     LCD_rdy();
     PORTCbits.RC2 = 1;
     PORTCbits.RC1 = 0;
@@ -8373,7 +8375,20 @@ void LCD_write(char data[]) {
         __nop();
         PORTCbits.RC0 = 0;
         __nop();
+        _delay((unsigned long)((250)*(1000000/4000.0)));
     }
+}
+
+void LCD_writeChar(char data) {
+    LCD_rdy();
+    PORTCbits.RC2 = 1;
+    PORTCbits.RC1 = 0;
+    PORTCbits.RC0 = 1;
+    __nop();
+    LATB = data;
+    __nop();
+    PORTCbits.RC0 = 0;
+    __nop();
 }
 # 9 "main.c" 2
 
@@ -8382,8 +8397,6 @@ void LCD_write(char data[]) {
 
 
 
-static char key_vals[4][4] = {{1, 2, 3, 10}, {4, 5, 6, 11}, {7, 8, 9, 12},
-    {14, 0, 15, 13}};
 
 
 enum por_dir{ output = 0, input = 1 };
@@ -8394,16 +8407,41 @@ enum butto_state{pushed = 0, no_pushed = 1};
 enum exponent {bbase=2, limit=8};
 
 
+
 void ports_init(void);
 
+
 void main(void) {
+    static char key_vals[4][4] = {{1, 2, 3, 10}, {4, 5, 6, 11}, {7, 8, 9, 12},
+    {14, 0, 15, 13}};
+    char message[] = "115x44";
     ports_init();
     LCD_init();
+
     while (1) {
-        _delay((unsigned long)((1000)*(1000000/4000.0)));
-        LCD_write("  Hello World!");
-        _delay((unsigned long)((1000)*(1000000/4000.0)));
-        LCD_returnHome();
+        LCD_writeStr(message);
+        LCD_newLine();
+
+
+        for (int i = 0; i < 15; i++) {
+            LCD_cursor(0, 1);
+        }
+
+        LCD_entryMode(0,0);
+        int result = 115*44;
+        while (result) {
+            char modulo = result % 10;
+            modulo += 48;
+            LCD_writeChar(modulo);
+            result /= 10;
+        }
+
+        LCD_dispControl(1,0,0);
+        LCD_entryMode(1,0);
+        _delay((unsigned long)((2000)*(1000000/4000.0)));
+        LCD_clear();
+        LCD_dispControl(1, 1, 1);
+        LCD_clear();
     }
 }
 
@@ -8417,7 +8455,9 @@ void ports_init ( void ) {
     LATD = 0;
 
     ANSELC = 0;
-    TRISC = 0;
+    TRISCbits.TRISC0=0;
+    TRISCbits.TRISC2=0;
+    TRISCbits.TRISC1=0;
     LATC = 0;
 
     ANSELB = 0;

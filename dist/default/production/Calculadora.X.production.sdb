@@ -3,24 +3,32 @@
 [d edition pro ]
 [d chip 18F45K50 ]
 [d frameptr 4065 ]
-"42 C:\Users\danie\MPLABXProjects\Calculadora.X/lcd.h
+"45 C:\Users\danie\MPLABXProjects\Calculadora.X/lcd.h
 [v _LCD_init LCD_init `(v  1 e 1 0 ]
-"53
+"52
 [v _LCD_clear LCD_clear `(v  1 e 1 0 ]
-"57
-[v _LCD_returnHome LCD_returnHome `(v  1 e 1 0 ]
-"65
+"60
+[v _LCD_entryMode LCD_entryMode `(v  1 e 1 0 ]
+"64
 [v _LCD_dispControl LCD_dispControl `(v  1 e 1 0 ]
-"69
+"68
 [v _LCD_cursor LCD_cursor `(v  1 e 1 0 ]
-"73
+"72
 [v _LCD_functionSet LCD_functionSet `(v  1 e 1 0 ]
-"77
+"76
+[v _LCD_newLine LCD_newLine `(v  1 e 1 0 ]
+"80
 [v _LCD_cmd LCD_cmd `(v  1 e 1 0 ]
-"89
+"92
 [v _LCD_rdy LCD_rdy `(v  1 e 1 0 ]
-"108
-[v _LCD_write LCD_write `(v  1 e 1 0 ]
+"111
+[v _LCD_writeStr LCD_writeStr `(v  1 e 1 0 ]
+"129
+[v _LCD_writeChar LCD_writeChar `(v  1 e 1 0 ]
+"7 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"7 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\float.c
@@ -49,7 +57,7 @@
 [v ___omul __omul `(uo  1 e 8 0 ]
 "29 C:\Users\danie\MPLABXProjects\Calculadora.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"40
+"63
 [v _ports_init ports_init `(v  1 e 1 0 ]
 "232 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3931 ]
@@ -61,7 +69,7 @@
 [v _ANSELD ANSELD `VEuc  1 e 1 @3934 ]
 "3053
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S94 . 1 `uc 1 RC0 1 0 :1:0 
+[s S57 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -71,29 +79,29 @@
 `uc 1 RC7 1 0 :1:7 
 ]
 "3205
-[s S103 . 1 `uc 1 T1OSO 1 0 :1:0 
+[s S66 . 1 `uc 1 T1OSO 1 0 :1:0 
 `uc 1 T1OSI 1 0 :1:1 
 `uc 1 CCP1 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 TX 1 0 :1:6 
 `uc 1 RX 1 0 :1:7 
 ]
-[s S110 . 1 `uc 1 T13CKI 1 0 :1:0 
+[s S73 . 1 `uc 1 T13CKI 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 P1A 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 CK 1 0 :1:6 
 `uc 1 DT 1 0 :1:7 
 ]
-[s S117 . 1 `uc 1 . 1 0 :1:0 
+[s S80 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 CCP2 1 0 :1:1 
 `uc 1 PA1 1 0 :1:2 
 ]
-[s S121 . 1 `uc 1 . 1 0 :1:0 
+[s S84 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 PA2 1 0 :1:1 
 ]
-[u S124 . 1 `S94 1 . 1 0 `S103 1 . 1 0 `S110 1 . 1 0 `S117 1 . 1 0 `S121 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES124  1 e 1 @3970 ]
+[u S87 . 1 `S57 1 . 1 0 `S66 1 . 1 0 `S73 1 . 1 0 `S80 1 . 1 0 `S84 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES87  1 e 1 @3970 ]
 "3779
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
 "3891
@@ -106,9 +114,7 @@
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "4848
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
-"5070
-[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
-[s S24 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S153 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -118,97 +124,146 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "5100
-[s S33 . 1 `uc 1 RC0 1 0 :1:0 
+[s S162 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S40 . 1 `S24 1 . 1 0 `S33 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES40  1 e 1 @3988 ]
+[u S169 . 1 `S153 1 . 1 0 `S162 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES169  1 e 1 @3988 ]
 "5248
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "29 C:\Users\danie\MPLABXProjects\Calculadora.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"38
+"48
+[v main@modulo modulo `uc  1 a 1 20 ]
+"41
+[v main@i i `i  1 a 2 21 ]
+"46
+[v main@result result `i  1 a 2 23 ]
+"32
+[v main@message message `[7]uc  1 a 7 13 ]
+"30
+[v main@F5373 F5373 `[7]uc  1 s 7 F5373 ]
+"61
 } 0
-"40
+"63
 [v _ports_init ports_init `(v  1 e 1 0 ]
 {
-"58
+"83
 } 0
-"108 C:\Users\danie\MPLABXProjects\Calculadora.X/lcd.h
-[v _LCD_write LCD_write `(v  1 e 1 0 ]
+"7 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 {
-"115
-[v LCD_write@i i `i  1 a 2 10 ]
-"114
-[v LCD_write@length length `i  1 a 2 8 ]
-"108
-[v LCD_write@data data `*.32uc  1 p 2 4 ]
-"123
+"10
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"7
+[v ___awmod@dividend dividend `i  1 p 2 0 ]
+[v ___awmod@divisor divisor `i  1 p 2 2 ]
+"34
+} 0
+"7 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"7
+[v ___awdiv@dividend dividend `i  1 p 2 0 ]
+[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+"41
+} 0
+"111 C:\Users\danie\MPLABXProjects\Calculadora.X/lcd.h
+[v _LCD_writeStr LCD_writeStr `(v  1 e 1 0 ]
+{
+"118
+[v LCD_writeStr@i i `i  1 a 2 9 ]
+"117
+[v LCD_writeStr@length length `i  1 a 2 7 ]
+"111
+[v LCD_writeStr@data data `*.39uc  1 p 2 4 ]
+"127
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
 {
 "7
-[v strlen@a a `*.32Cuc  1 a 2 2 ]
+[v strlen@a a `*.39Cuc  1 a 2 2 ]
 "5
-[v strlen@s s `*.32Cuc  1 p 2 0 ]
+[v strlen@s s `*.39Cuc  1 p 2 0 ]
 "12
 } 0
-"57 C:\Users\danie\MPLABXProjects\Calculadora.X/lcd.h
-[v _LCD_returnHome LCD_returnHome `(v  1 e 1 0 ]
+"129 C:\Users\danie\MPLABXProjects\Calculadora.X/lcd.h
+[v _LCD_writeChar LCD_writeChar `(v  1 e 1 0 ]
 {
-"59
+[v LCD_writeChar@data data `uc  1 a 1 wreg ]
+[v LCD_writeChar@data data `uc  1 a 1 wreg ]
+[v LCD_writeChar@data data `uc  1 a 1 1 ]
+"139
 } 0
-"42
+"76
+[v _LCD_newLine LCD_newLine `(v  1 e 1 0 ]
+{
+"78
+} 0
+"45
 [v _LCD_init LCD_init `(v  1 e 1 0 ]
 {
-"51
+"50
 } 0
-"73
+"72
 [v _LCD_functionSet LCD_functionSet `(v  1 e 1 0 ]
 {
 [v LCD_functionSet@DL DL `i  1 p 2 2 ]
 [v LCD_functionSet@N N `i  1 p 2 4 ]
 [v LCD_functionSet@F F `i  1 p 2 6 ]
-"75
+"74
 } 0
-"65
+"60
+[v _LCD_entryMode LCD_entryMode `(v  1 e 1 0 ]
+{
+[v LCD_entryMode@ID ID `i  1 p 2 2 ]
+[v LCD_entryMode@SH SH `i  1 p 2 4 ]
+"62
+} 0
+"64
 [v _LCD_dispControl LCD_dispControl `(v  1 e 1 0 ]
 {
 [v LCD_dispControl@D D `i  1 p 2 2 ]
 [v LCD_dispControl@C C `i  1 p 2 4 ]
 [v LCD_dispControl@B B `i  1 p 2 6 ]
-"67
+"66
 } 0
-"69
+"52
+[v _LCD_clear LCD_clear `(v  1 e 1 0 ]
+{
+"54
+} 0
+"68
 [v _LCD_cursor LCD_cursor `(v  1 e 1 0 ]
 {
 [v LCD_cursor@SC SC `i  1 p 2 2 ]
 [v LCD_cursor@RL RL `i  1 p 2 4 ]
-"71
+"70
 } 0
-"53
-[v _LCD_clear LCD_clear `(v  1 e 1 0 ]
-{
-"55
-} 0
-"77
+"80
 [v _LCD_cmd LCD_cmd `(v  1 e 1 0 ]
 {
 [v LCD_cmd@cmd cmd `uc  1 a 1 wreg ]
 [v LCD_cmd@cmd cmd `uc  1 a 1 wreg ]
 [v LCD_cmd@cmd cmd `uc  1 a 1 1 ]
-"87
+"90
 } 0
-"89
+"92
 [v _LCD_rdy LCD_rdy `(v  1 e 1 0 ]
 {
-"90
+"93
 [v LCD_rdy@busy busy `uc  1 a 1 0 ]
-"106
+"109
 } 0

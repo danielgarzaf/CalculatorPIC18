@@ -14,8 +14,8 @@
 #include <stdio.h>
 #include <string.h>
 
-
-#define _XTAL_FREQ           1000000
+#define _XTAL_FREQ          1000000
+#define LCD_RS_RW_E         ANSELC
 #define LCD_DATA_R          PORTB
 #define LCD_DATA_W          LATB
 #define LCD_DATA_DIR        TRISB
@@ -25,7 +25,7 @@
 #define LCD_RW_DIR          TRISCbits.TRISC1
 #define LCD_EN              PORTCbits.RC0
 #define LCD_EN_DIR          TRISCbits.TRISC0
-
+#define LCD_N_CHARS         15
 
 void LCD_init(void);
 void LCD_clear(void);
@@ -34,20 +34,18 @@ void LCD_entryMode(int dir, int shift);
 void LCD_dispControl(int disp, int cursor, int blink);
 void LCD_cursor(int setCursor, int direction);
 void LCD_functionSet(int DL, int N, int F);
+void LCD_newLine();
 void LCD_cmd(char cmd);
 void LCD_rdy(void);
-void LCD_write(char data[]);
+void LCD_writeStr(char data[]);
+void LCD_writeChar(char data);
 
 
 void LCD_init(void) {
-    LCD_EN_DIR=0; //                output
-    LCD_RS_DIR=0; //                output
-    LCD_RW_DIR=0; //                output
-    LATC = 0;
-    LCD_clear(); //                 Clear Display
-    LCD_functionSet(1,0,0); //      Function Set (Data length = 8, Display Lines = 1, Font = 5x8 dots)
-    LCD_dispControl(1,1,0); //      Disp Control 
-    LCD_cursor(1, 1); //            Cursor
+    LCD_clear(); //                     Clear Display
+    LCD_functionSet(1, 1, 0); //        Function Set (DL->1: 8 bit data line, N->1: 2 data lines, F->0: 5x8 font)
+    LCD_dispControl(1, 1, 1); //        Disp Control (D->1: Display ON, C->1: Cursor ON, B->1: Blinking ON)
+    LCD_entryMode(1, 0);//              Entry Mode (ID->1: Increment, S->0: No display shift)
 }
 
 void LCD_clear(void) {
@@ -58,7 +56,7 @@ void LCD_returnHome(void) {
     LCD_cmd(0b00000010);
 }
 
-void LCD_entryMode(int ID, int SH) { 
+void LCD_entryMode(int ID, int SH) {
     LCD_cmd(0b00000100 | ID << 1 | SH);
 }
 
@@ -72,6 +70,10 @@ void LCD_cursor(int SC, int RL) {
 
 void LCD_functionSet(int DL, int N, int F) {
     LCD_cmd(0b00100000 | DL << 4 | N << 3 | F << 2);
+}
+
+void LCD_newLine() {
+    LCD_cmd(0xC0);
 }
 
 void LCD_cmd (char cmd) {
@@ -105,9 +107,9 @@ void LCD_rdy (void) {
     LCD_DATA_DIR = 0b00000000;//    LCD data bus as output
 }
 
-void LCD_write(char data[]) {
+void LCD_writeStr(char data[]) {
     LCD_rdy();
-    LCD_RS = 1;//    
+    LCD_RS = 1;    
     LCD_RW = 0;
     
     // Write each character in string
@@ -119,9 +121,21 @@ void LCD_write(char data[]) {
         Nop();
         LCD_EN = 0;
         Nop();
+        __delay_ms(250);
     }
 }
 
+void LCD_writeChar(char data) {
+    LCD_rdy();
+    LCD_RS = 1;
+    LCD_RW = 0;
+    LCD_EN = 1;
+    Nop();
+    LCD_DATA_W = data;
+    Nop();
+    LCD_EN = 0;
+    Nop();
+}
 #ifdef	__cplusplus
 extern "C" {
 #endif /* __cplusplus */
