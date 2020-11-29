@@ -8280,14 +8280,14 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 15 "./lcd.h" 2
-# 31 "./lcd.h"
+# 30 "./lcd.h"
 void LCD_init(void);
 void LCD_clear(void);
 void LCD_returnHome(void);
-void LCD_entryMode(int dir, int shift);
-void LCD_dispControl(int disp, int cursor, int blink);
-void LCD_cursor(int setCursor, int direction);
-void LCD_functionSet(int DL, int N, int F);
+void LCD_entryMode(short int dir, short int shift);
+void LCD_dispControl(short int disp, short int cursor, short int blink);
+void LCD_cursor(short int setCursor, short int direction);
+void LCD_functionSet(short int DL, short int N, short int F);
 void LCD_newLine();
 void LCD_cmd(char cmd);
 void LCD_rdy(void);
@@ -8310,19 +8310,19 @@ void LCD_returnHome(void) {
     LCD_cmd(0b00000010);
 }
 
-void LCD_entryMode(int ID, int SH) {
+void LCD_entryMode(short int ID, short int SH) {
     LCD_cmd(0b00000100 | ID << 1 | SH);
 }
 
-void LCD_dispControl(int D, int C, int B) {
+void LCD_dispControl(short int D, short int C, short int B) {
     LCD_cmd(0b00001000 | D << 2 | C << 1 | B);
 }
 
-void LCD_cursor(int SC, int RL) {
+void LCD_cursor(short int SC, short int RL) {
     LCD_cmd(0b00010000 | SC << 3 | RL << 2);
 }
 
-void LCD_functionSet(int DL, int N, int F) {
+void LCD_functionSet(short int DL, short int N, short int F) {
     LCD_cmd(0b00100000 | DL << 4 | N << 3 | F << 2);
 }
 
@@ -8336,7 +8336,7 @@ void LCD_cmd (char cmd) {
     PORTCbits.RC1=0;
     PORTCbits.RC0=1;
     __nop();
-    LATB = cmd;
+    LATD = cmd;
     __nop();
     PORTCbits.RC0=0;
     __nop();
@@ -8344,7 +8344,7 @@ void LCD_cmd (char cmd) {
 
 void LCD_rdy (void) {
     char busy = 0x80;
-    TRISB = 0b11111111;
+    TRISD = 0b11111111;
     PORTCbits.RC2 = 0;
     PORTCbits.RC1 = 1;
 
@@ -8352,13 +8352,13 @@ void LCD_rdy (void) {
     while (busy) {
         PORTCbits.RC0 = 1;
         __nop();
-        busy = PORTB & 0x80;
+        busy = PORTD & 0x80;
         __nop();
         PORTCbits.RC0 = 0;
         __nop();
     }
 
-    TRISB = 0b00000000;
+    TRISD = 0b00000000;
 }
 
 void LCD_writeStr(char data[]) {
@@ -8367,11 +8367,11 @@ void LCD_writeStr(char data[]) {
     PORTCbits.RC1 = 0;
 
 
-    int length = strlen(data);
+    short int length = strlen(data);
     for (int i = 0; i < length; i++){
         PORTCbits.RC0 = 1;
         __nop();
-        LATB = data[i];
+        LATD = data[i];
         __nop();
         PORTCbits.RC0 = 0;
         __nop();
@@ -8383,15 +8383,100 @@ void LCD_writeChar(char data) {
     LCD_rdy();
     PORTCbits.RC2 = 1;
     PORTCbits.RC1 = 0;
+
     PORTCbits.RC0 = 1;
     __nop();
-    LATB = data;
+    LATD = data;
     __nop();
     PORTCbits.RC0 = 0;
     __nop();
 }
 # 9 "main.c" 2
 
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 1 3
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 127 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+# 173 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 188 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 209 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 139 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 139 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
+# 10 "main.c" 2
 
 
 
@@ -8409,39 +8494,24 @@ enum exponent {bbase=2, limit=8};
 
 
 void ports_init(void);
-
+void printCalcResult(long int result);
 
 void main(void) {
     static char key_vals[4][4] = {{1, 2, 3, 10}, {4, 5, 6, 11}, {7, 8, 9, 12},
-    {14, 0, 15, 13}};
-    char message[] = "115x44";
+        {14, 0, 15, 13}};
     ports_init();
     LCD_init();
 
+
     while (1) {
-        LCD_writeStr(message);
+        LCD_writeStr("1234*5678");
         LCD_newLine();
 
 
-        for (int i = 0; i < 15; i++) {
-            LCD_cursor(0, 1);
-        }
+        int32_t result = 1234L*5678;
+        printCalcResult(result);
 
-        LCD_entryMode(0,0);
-        int result = 115*44;
-        while (result) {
-            char modulo = result % 10;
-            modulo += 48;
-            LCD_writeChar(modulo);
-            result /= 10;
-        }
-
-        LCD_dispControl(1,0,0);
-        LCD_entryMode(1,0);
-        _delay((unsigned long)((2000)*(1000000/4000.0)));
-        LCD_clear();
-        LCD_dispControl(1, 1, 1);
-        LCD_clear();
+        LCD_init();
     }
 }
 
@@ -8450,9 +8520,9 @@ void ports_init ( void ) {
     TRISA = 0;
     LATA = 0;
 
-    ANSELD = 0;
-    TRISD = 0b00001111;
-    LATD = 0;
+    ANSELB = 0;
+    TRISB = 0b00001111;
+    LATB = 0;
 
     ANSELC = 0;
     TRISCbits.TRISC0=0;
@@ -8460,9 +8530,25 @@ void ports_init ( void ) {
     TRISCbits.TRISC1=0;
     LATC = 0;
 
-    ANSELB = 0;
-    TRISB = 0;
-    LATB = 0;
+    ANSELD = 0;
+    TRISD = 0;
+    LATD = 0;
 
 
+}
+
+void printCalcResult(long int result) {
+
+    for (int i = 0; i < 15; i++) {
+        LCD_cursor(0, 1);
+    }
+    LCD_entryMode(0,0);
+    while (result) {
+        char modulo = result % 10;
+        modulo += 48;
+        LCD_writeChar(modulo);
+        result /= 10;
+    }
+    LCD_dispControl(1,0,0);
+    _delay((unsigned long)((2000)*(1000000/4000.0)));
 }

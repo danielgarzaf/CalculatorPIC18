@@ -7,6 +7,7 @@
 
 #include "config_bits.h"
 #include "lcd.h"
+#include <stdint.h>
 
 #define _XTAL_FREQ          1000000
 #define TWO_SECONDS         2000
@@ -23,33 +24,24 @@ enum exponent {bbase=2, limit=8};
 
 // Prototype functions
 void ports_init(void);
-void printResult(long int result);
+void printCalcResult(long int result);
 
 void main(void) {
     static char key_vals[4][4] = {{1, 2, 3, 10}, {4, 5, 6, 11}, {7, 8, 9, 12}, 
         {14, 0, 15, 13}};
-    char message[] = "115x44";
     ports_init();
     LCD_init();
     
+    // Main loop
     while (1) {
-        LCD_writeStr(message);
+        LCD_writeStr("1234*5678");
         LCD_newLine();
         
-        // Shift cursor to end of disp
-        for (int i = 0; i < LCD_N_CHARS; i++) {
-            LCD_cursor(0, 1);//             Cursor/Disp shift   (SC->0: Cursor move, RL->: Shift right)
-        }
-        
         // Write result at lower right corner of LCD
-        LCD_entryMode(0,0);//               Entry Mode          (ID->0: Decrement, S->1: Display shift)
-        long int result = 115*44;      
-        printResult(result);
-        LCD_dispControl(1,0,0);//           Disp Control        (D->1: Display ON, C->0: Cursor OFF, B->0: Blinking OFF)
-        LCD_entryMode(1,0);//               Entry Mode          (ID->1: Increment, S->0: No disp shift)
-        __delay_ms(2000);
-        LCD_dispControl(1, 1, 1); //        Disp Control        (D->1: Display ON, C->1: Cursor ON, B->1: Blinking ON)
-        LCD_clear();
+        int32_t result = 1234L*5678;      
+        printCalcResult(result);
+        
+        LCD_init();
     }
 }
 
@@ -58,9 +50,9 @@ void ports_init ( void ) {
     TRISA = 0; //                   Set PortA as output
     LATA = 0;
     
-    ANSELD = 0;//                   Set PortD as digital port
-    TRISD = 0b00001111;//           Set RD7-RD4 as output and RD3-RD0 as inputs
-    LATD = 0;
+    ANSELB = 0;//                   Set PortD as digital port
+    TRISB = 0b00001111;//           Set RB7-RB4 as output and RB3-RB0 as inputs
+    LATB = 0;
     
     LCD_RS_RW_E = 0;//              Set LCD control signals as digital ports
     LCD_EN_DIR=0; //                output
@@ -68,19 +60,26 @@ void ports_init ( void ) {
     LCD_RW_DIR=0; //                output
     LATC = 0;
     
-    ANSELB = 0;
-    TRISB = 0;
-    LATB = 0;
+    ANSELD = 0;
+    TRISD = 0;
+    LATD = 0;
 //    INTCON2 = 0b00000000;
 //    WPUB = 0b00001111;;//           Ports RD3-RB0 are set as weak pull-ups
 }
 
-void printResult(long int result) {
+void printCalcResult(long int result) {
+    // Shift cursor to end of disp
+    for (int i = 0; i < LCD_N_CHARS; i++) {
+        LCD_cursor(0, 1);//             Cursor/Disp shift   (SC->0: Cursor move, RL-> 1: Shift right)
+    }
+    LCD_entryMode(0,0);//               Entry Mode          (ID->0: Decrement, S->0: No Display shift)
     while (result) {
         char modulo = result % 10;
         modulo += 48;
         LCD_writeChar(modulo);
         result /= 10;
     }    
+    LCD_dispControl(1,0,0);//           Disp Control        (D->1: Display ON, C->0: Cursor OFF, B->0: Blinking OFF)
+    __delay_ms(2000);
 }
 

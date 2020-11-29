@@ -1,116 +1,198 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"23 main.c
-[; ;main.c: 23: void ports_init(void);
-[v _ports_init `(v ~T0 @X0 0 ef ]
+"31 ./lcd.h
+[; ;./lcd.h: 31: void LCD_clear(void);
+[v _LCD_clear `(v ~T0 @X0 0 ef ]
+"36
+[; ;./lcd.h: 36: void LCD_functionSet(short int DL, short int N, short int F);
+[v _LCD_functionSet `(v ~T0 @X0 0 ef3`s`s`s ]
+"34
+[; ;./lcd.h: 34: void LCD_dispControl(short int disp, short int cursor, short int blink);
+[v _LCD_dispControl `(v ~T0 @X0 0 ef3`s`s`s ]
+"33
+[; ;./lcd.h: 33: void LCD_entryMode(short int dir, short int shift);
+[v _LCD_entryMode `(v ~T0 @X0 0 ef2`s`s ]
+"38
+[; ;./lcd.h: 38: void LCD_cmd(char cmd);
+[v _LCD_cmd `(v ~T0 @X0 0 ef1`uc ]
+"39
+[; ;./lcd.h: 39: void LCD_rdy(void);
+[v _LCD_rdy `(v ~T0 @X0 0 ef ]
+"3169 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 3169:     struct {
+[s S139 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S139 . RC0 RC1 RC2 . RC4 RC5 RC6 RC7 ]
+"3179
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 3179:     struct {
+[s S140 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S140 . T1OSO T1OSI CCP1 . TX RX ]
+"3187
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 3187:     struct {
+[s S141 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S141 . T13CKI . P1A . CK DT ]
+"3195
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 3195:     struct {
+[s S142 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S142 . . CCP2 PA1 ]
+"3200
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 3200:     struct {
+[s S143 :1 `uc 1 :1 `uc 1 ]
+[n S143 . . PA2 ]
+"3168
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 3168: typedef union {
+[u S138 `S139 1 `S140 1 `S141 1 `S142 1 `S143 1 ]
+[n S138 . . . . . . ]
+"3205
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 3205: extern volatile PORTCbits_t PORTCbits __attribute__((address(0xF82)));
+[v _PORTCbits `VS138 ~T0 @X0 0 e@3970 ]
+"50 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18.h
+[v ___nop `(v ~T0 @X0 0 ef ]
+[p i ___nop ]
 "4105 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 4105: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
 [v _LATD `Vuc ~T0 @X0 0 e@3980 ]
-"232
+"5248
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 5248: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"3305
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 3305: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
+[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\string.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\c99\string.h: 54: size_t strlen (const char *);
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
+[p mainexit ]
+"26 main.c
+[; ;main.c: 26: void ports_init(void);
+[v _ports_init `(v ~T0 @X0 0 ef ]
+"27
+[; ;main.c: 27: void printCalcResult(long int result);
+[v _printCalcResult `(v ~T0 @X0 0 ef1`l ]
+[v F4805 `(v ~T0 @X0 1 tf1`ul ]
+"187 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18.h
+[v __delay `JF4805 ~T0 @X0 0 e ]
+[p i __delay ]
+"232 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 232: extern volatile unsigned char ANSELA __attribute__((address(0xF5B)));
 [v _ANSELA `Vuc ~T0 @X0 0 e@3931 ]
 "4626
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 4626: extern volatile unsigned char TRISA __attribute__((address(0xF92)));
 [v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
+"3779
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 3779: extern volatile unsigned char LATA __attribute__((address(0xF89)));
+[v _LATA `Vuc ~T0 @X0 0 e@3977 ]
 "277
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 277: extern volatile unsigned char ANSELB __attribute__((address(0xF5C)));
 [v _ANSELB `Vuc ~T0 @X0 0 e@3932 ]
 "4848
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 4848: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"3891
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 3891: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
+[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
 "327
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 327: extern volatile unsigned char ANSELC __attribute__((address(0xF5D)));
 [v _ANSELC `Vuc ~T0 @X0 0 e@3933 ]
-"5070
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 5070: extern volatile unsigned char TRISC __attribute__((address(0xF94)));
-[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
+"5081
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 5081:     struct {
+[s S207 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S207 . TRISC0 TRISC1 TRISC2 . TRISC4 TRISC5 TRISC6 TRISC7 ]
+"5091
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 5091:     struct {
+[s S208 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S208 . RC0 RC1 RC2 . RC6 RC7 ]
+"5080
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 5080: typedef union {
+[u S206 `S207 1 `S208 1 ]
+[n S206 . . . ]
+"5100
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 5100: extern volatile TRISCbits_t TRISCbits __attribute__((address(0xF94)));
+[v _TRISCbits `VS206 ~T0 @X0 0 e@3988 ]
+"4003
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 4003: extern volatile unsigned char LATC __attribute__((address(0xF8B)));
+[v _LATC `Vuc ~T0 @X0 0 e@3979 ]
 "361
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 361: extern volatile unsigned char ANSELD __attribute__((address(0xF5E)));
 [v _ANSELD `Vuc ~T0 @X0 0 e@3934 ]
-"5248
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 5248: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
-[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
-"5 ./config_bits.h
+"6 ./config_bits.h
 [p x PLLSEL = PLL4X ]
-"6
-[p x CFGPLLEN = OFF ]
 "7
-[p x CPUDIV = NOCLKDIV ]
+[p x CFGPLLEN = OFF ]
 "8
+[p x CPUDIV = NOCLKDIV ]
+"9
 [p x LS48MHZ = SYS24X4 ]
-"11
-[p x FOSC = ECHIO ]
 "12
-[p x PCLKEN = ON ]
+[p x FOSC = INTOSCIO ]
 "13
-[p x FCMEN = OFF ]
+[p x PCLKEN = ON ]
 "14
+[p x FCMEN = OFF ]
+"15
 [p x IESO = OFF ]
-"17
-[p x nPWRTEN = OFF ]
 "18
-[p x BOREN = SBORDIS ]
+[p x nPWRTEN = OFF ]
 "19
-[p x BORV = 190 ]
+[p x BOREN = SBORDIS ]
 "20
+[p x BORV = 190 ]
+"21
 [p x nLPBOR = OFF ]
-"23
-[p x WDTEN = ON ]
 "24
+[p x WDTEN = OFF ]
+"25
 [p x WDTPS = 32768 ]
-"27
-[p x CCP2MX = RC1 ]
 "28
-[p x PBADEN = ON ]
+[p x CCP2MX = RC1 ]
 "29
-[p x T3CMX = RC0 ]
+[p x PBADEN = ON ]
 "30
-[p x SDOMX = RB3 ]
+[p x T3CMX = RC0 ]
 "31
+[p x SDOMX = RB3 ]
+"32
 [p x MCLRE = ON ]
-"34
-[p x STVREN = ON ]
 "35
-[p x LVP = ON ]
+[p x STVREN = ON ]
 "36
-[p x ICPRT = OFF ]
+[p x LVP = ON ]
 "37
+[p x ICPRT = OFF ]
+"38
 [p x XINST = OFF ]
-"40
-[p x CP0 = OFF ]
 "41
-[p x CP1 = OFF ]
+[p x CP0 = OFF ]
 "42
-[p x CP2 = OFF ]
+[p x CP1 = OFF ]
 "43
+[p x CP2 = OFF ]
+"44
 [p x CP3 = OFF ]
-"46
-[p x CPB = OFF ]
 "47
+[p x CPB = OFF ]
+"48
 [p x CPD = OFF ]
-"50
-[p x WRT0 = OFF ]
 "51
-[p x WRT1 = OFF ]
+[p x WRT0 = OFF ]
 "52
-[p x WRT2 = OFF ]
+[p x WRT1 = OFF ]
 "53
+[p x WRT2 = OFF ]
+"54
 [p x WRT3 = OFF ]
-"56
-[p x WRTC = OFF ]
 "57
-[p x WRTB = OFF ]
+[p x WRTC = OFF ]
 "58
+[p x WRTB = OFF ]
+"59
 [p x WRTD = OFF ]
-"61
-[p x EBTR0 = OFF ]
 "62
-[p x EBTR1 = OFF ]
+[p x EBTR0 = OFF ]
 "63
-[p x EBTR2 = OFF ]
+[p x EBTR1 = OFF ]
 "64
+[p x EBTR2 = OFF ]
+"65
 [p x EBTR3 = OFF ]
-"67
+"68
 [p x EBTRB = OFF ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 54: __asm("SRCON1 equ 0F57h");
@@ -736,11 +818,332 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13651
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h: 13651: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-[v F4814 `uc ~T0 @X0 -> 4 `i t ]
-"11 main.c
-[; ;main.c: 11: static char key_vals[4][4] = {{1, 2, 3, 10}, {4, 5, 6, 11}, {7, 8, 9, 12},
-[v _key_vals `F4814 ~T0 @X0 -> 4 `i s ]
-[i _key_vals
+"44 ./lcd.h
+[; ;./lcd.h: 44: void LCD_init(void) {
+[v _LCD_init `(v ~T0 @X0 1 ef ]
+{
+[e :U _LCD_init ]
+[f ]
+"45
+[; ;./lcd.h: 45:     LCD_clear();
+[e ( _LCD_clear ..  ]
+"46
+[; ;./lcd.h: 46:     LCD_functionSet(1, 1, 0);
+[e ( _LCD_functionSet (3 , , -> -> 1 `i `s -> -> 1 `i `s -> -> 0 `i `s ]
+"47
+[; ;./lcd.h: 47:     LCD_dispControl(1, 1, 1);
+[e ( _LCD_dispControl (3 , , -> -> 1 `i `s -> -> 1 `i `s -> -> 1 `i `s ]
+"48
+[; ;./lcd.h: 48:     LCD_entryMode(1, 0);
+[e ( _LCD_entryMode (2 , -> -> 1 `i `s -> -> 0 `i `s ]
+"49
+[; ;./lcd.h: 49: }
+[e :UE 639 ]
+}
+"51
+[; ;./lcd.h: 51: void LCD_clear(void) {
+[v _LCD_clear `(v ~T0 @X0 1 ef ]
+{
+[e :U _LCD_clear ]
+[f ]
+"52
+[; ;./lcd.h: 52:     LCD_cmd(0b00000001);
+[e ( _LCD_cmd (1 -> -> 1 `i `uc ]
+"53
+[; ;./lcd.h: 53: }
+[e :UE 640 ]
+}
+"55
+[; ;./lcd.h: 55: void LCD_returnHome(void) {
+[v _LCD_returnHome `(v ~T0 @X0 1 ef ]
+{
+[e :U _LCD_returnHome ]
+[f ]
+"56
+[; ;./lcd.h: 56:     LCD_cmd(0b00000010);
+[e ( _LCD_cmd (1 -> -> 2 `i `uc ]
+"57
+[; ;./lcd.h: 57: }
+[e :UE 641 ]
+}
+"59
+[; ;./lcd.h: 59: void LCD_entryMode(short int ID, short int SH) {
+[v _LCD_entryMode `(v ~T0 @X0 1 ef2`s`s ]
+{
+[e :U _LCD_entryMode ]
+[v _ID `s ~T0 @X0 1 r1 ]
+[v _SH `s ~T0 @X0 1 r2 ]
+[f ]
+"60
+[; ;./lcd.h: 60:     LCD_cmd(0b00000100 | ID << 1 | SH);
+[e ( _LCD_cmd (1 -> | | -> 4 `i << -> _ID `i -> 1 `i -> _SH `i `uc ]
+"61
+[; ;./lcd.h: 61: }
+[e :UE 642 ]
+}
+"63
+[; ;./lcd.h: 63: void LCD_dispControl(short int D, short int C, short int B) {
+[v _LCD_dispControl `(v ~T0 @X0 1 ef3`s`s`s ]
+{
+[e :U _LCD_dispControl ]
+[v _D `s ~T0 @X0 1 r1 ]
+[v _C `s ~T0 @X0 1 r2 ]
+[v _B `s ~T0 @X0 1 r3 ]
+[f ]
+"64
+[; ;./lcd.h: 64:     LCD_cmd(0b00001000 | D << 2 | C << 1 | B);
+[e ( _LCD_cmd (1 -> | | | -> 8 `i << -> _D `i -> 2 `i << -> _C `i -> 1 `i -> _B `i `uc ]
+"65
+[; ;./lcd.h: 65: }
+[e :UE 643 ]
+}
+"67
+[; ;./lcd.h: 67: void LCD_cursor(short int SC, short int RL) {
+[v _LCD_cursor `(v ~T0 @X0 1 ef2`s`s ]
+{
+[e :U _LCD_cursor ]
+[v _SC `s ~T0 @X0 1 r1 ]
+[v _RL `s ~T0 @X0 1 r2 ]
+[f ]
+"68
+[; ;./lcd.h: 68:     LCD_cmd(0b00010000 | SC << 3 | RL << 2);
+[e ( _LCD_cmd (1 -> | | -> 16 `i << -> _SC `i -> 3 `i << -> _RL `i -> 2 `i `uc ]
+"69
+[; ;./lcd.h: 69: }
+[e :UE 644 ]
+}
+"71
+[; ;./lcd.h: 71: void LCD_functionSet(short int DL, short int N, short int F) {
+[v _LCD_functionSet `(v ~T0 @X0 1 ef3`s`s`s ]
+{
+[e :U _LCD_functionSet ]
+[v _DL `s ~T0 @X0 1 r1 ]
+[v _N `s ~T0 @X0 1 r2 ]
+[v _F `s ~T0 @X0 1 r3 ]
+[f ]
+"72
+[; ;./lcd.h: 72:     LCD_cmd(0b00100000 | DL << 4 | N << 3 | F << 2);
+[e ( _LCD_cmd (1 -> | | | -> 32 `i << -> _DL `i -> 4 `i << -> _N `i -> 3 `i << -> _F `i -> 2 `i `uc ]
+"73
+[; ;./lcd.h: 73: }
+[e :UE 645 ]
+}
+"75
+[; ;./lcd.h: 75: void LCD_newLine() {
+[v _LCD_newLine `(v ~T0 @X0 1 ef ]
+{
+[e :U _LCD_newLine ]
+[f ]
+"76
+[; ;./lcd.h: 76:     LCD_cmd(0xC0);
+[e ( _LCD_cmd (1 -> -> 192 `i `uc ]
+"77
+[; ;./lcd.h: 77: }
+[e :UE 646 ]
+}
+"79
+[; ;./lcd.h: 79: void LCD_cmd (char cmd) {
+[v _LCD_cmd `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _LCD_cmd ]
+[v _cmd `uc ~T0 @X0 1 r1 ]
+[f ]
+"80
+[; ;./lcd.h: 80:     LCD_rdy();
+[e ( _LCD_rdy ..  ]
+"81
+[; ;./lcd.h: 81:     PORTCbits.RC2=0;
+[e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
+"82
+[; ;./lcd.h: 82:     PORTCbits.RC1=0;
+[e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
+"83
+[; ;./lcd.h: 83:     PORTCbits.RC0=1;
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+"84
+[; ;./lcd.h: 84:     __nop();
+[e ( ___nop ..  ]
+"85
+[; ;./lcd.h: 85:     LATD = cmd;
+[e = _LATD -> _cmd `uc ]
+"86
+[; ;./lcd.h: 86:     __nop();
+[e ( ___nop ..  ]
+"87
+[; ;./lcd.h: 87:     PORTCbits.RC0=0;
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+"88
+[; ;./lcd.h: 88:     __nop();
+[e ( ___nop ..  ]
+"89
+[; ;./lcd.h: 89: }
+[e :UE 647 ]
+}
+"91
+[; ;./lcd.h: 91: void LCD_rdy (void) {
+[v _LCD_rdy `(v ~T0 @X0 1 ef ]
+{
+[e :U _LCD_rdy ]
+[f ]
+"92
+[; ;./lcd.h: 92:     char busy = 0x80;
+[v _busy `uc ~T0 @X0 1 a ]
+[e = _busy -> -> 128 `i `uc ]
+"93
+[; ;./lcd.h: 93:     TRISD = 0b11111111;
+[e = _TRISD -> -> 255 `i `uc ]
+"94
+[; ;./lcd.h: 94:     PORTCbits.RC2 = 0;
+[e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
+"95
+[; ;./lcd.h: 95:     PORTCbits.RC1 = 1;
+[e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
+"98
+[; ;./lcd.h: 98:     while (busy) {
+[e $U 649  ]
+[e :U 650 ]
+{
+"99
+[; ;./lcd.h: 99:         PORTCbits.RC0 = 1;
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+"100
+[; ;./lcd.h: 100:         __nop();
+[e ( ___nop ..  ]
+"101
+[; ;./lcd.h: 101:         busy = PORTD & 0x80;
+[e = _busy -> & -> _PORTD `i -> 128 `i `uc ]
+"102
+[; ;./lcd.h: 102:         __nop();
+[e ( ___nop ..  ]
+"103
+[; ;./lcd.h: 103:         PORTCbits.RC0 = 0;
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+"104
+[; ;./lcd.h: 104:         __nop();
+[e ( ___nop ..  ]
+"105
+[; ;./lcd.h: 105:     }
+}
+[e :U 649 ]
+"98
+[; ;./lcd.h: 98:     while (busy) {
+[e $ != -> _busy `i -> 0 `i 650  ]
+[e :U 651 ]
+"107
+[; ;./lcd.h: 107:     TRISD = 0b00000000;
+[e = _TRISD -> -> 0 `i `uc ]
+"108
+[; ;./lcd.h: 108: }
+[e :UE 648 ]
+}
+"110
+[; ;./lcd.h: 110: void LCD_writeStr(char data[]) {
+[v _LCD_writeStr `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _LCD_writeStr ]
+[v _data `*uc ~T0 @X0 1 r1 ]
+[f ]
+"111
+[; ;./lcd.h: 111:     LCD_rdy();
+[e ( _LCD_rdy ..  ]
+"112
+[; ;./lcd.h: 112:     PORTCbits.RC2 = 1;
+[e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
+"113
+[; ;./lcd.h: 113:     PORTCbits.RC1 = 0;
+[e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
+"116
+[; ;./lcd.h: 116:     short int length = strlen(data);
+[v _length `s ~T0 @X0 1 a ]
+[e = _length -> ( _strlen (1 -> _data `*Cuc `s ]
+"117
+[; ;./lcd.h: 117:     for (int i = 0; i < length; i++){
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 656  ]
+[e :U 653 ]
+{
+"118
+[; ;./lcd.h: 118:         PORTCbits.RC0 = 1;
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+"119
+[; ;./lcd.h: 119:         __nop();
+[e ( ___nop ..  ]
+"120
+[; ;./lcd.h: 120:         LATD = data[i];
+[e = _LATD -> *U + _data * -> _i `x -> -> # *U _data `i `x `uc ]
+"121
+[; ;./lcd.h: 121:         __nop();
+[e ( ___nop ..  ]
+"122
+[; ;./lcd.h: 122:         PORTCbits.RC0 = 0;
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+"123
+[; ;./lcd.h: 123:         __nop();
+[e ( ___nop ..  ]
+"125
+[; ;./lcd.h: 125:     }
+}
+[e ++ _i -> 1 `i ]
+[e :U 656 ]
+[e $ < _i -> _length `i 653  ]
+[e :U 654 ]
+}
+"126
+[; ;./lcd.h: 126: }
+[e :UE 652 ]
+}
+"128
+[; ;./lcd.h: 128: void LCD_writeChar(char data) {
+[v _LCD_writeChar `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _LCD_writeChar ]
+[v _data `uc ~T0 @X0 1 r1 ]
+[f ]
+"129
+[; ;./lcd.h: 129:     LCD_rdy();
+[e ( _LCD_rdy ..  ]
+"130
+[; ;./lcd.h: 130:     PORTCbits.RC2 = 1;
+[e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
+"131
+[; ;./lcd.h: 131:     PORTCbits.RC1 = 0;
+[e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
+"133
+[; ;./lcd.h: 133:     PORTCbits.RC0 = 1;
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+"134
+[; ;./lcd.h: 134:     __nop();
+[e ( ___nop ..  ]
+"135
+[; ;./lcd.h: 135:     LATD = data;
+[e = _LATD -> _data `uc ]
+"136
+[; ;./lcd.h: 136:     __nop();
+[e ( ___nop ..  ]
+"137
+[; ;./lcd.h: 137:     PORTCbits.RC0 = 0;
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+"138
+[; ;./lcd.h: 138:     __nop();
+[e ( ___nop ..  ]
+"139
+[; ;./lcd.h: 139: }
+[e :UE 657 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"29 main.c
+[; ;main.c: 29: void main(void) {
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+[v F5404 `uc ~T0 @X0 -> 4 `i t ]
+"30
+[; ;main.c: 30:     static char key_vals[4][4] = {{1, 2, 3, 10}, {4, 5, 6, 11}, {7, 8, 9, 12},
+[v F5403 `F5404 ~T0 @X0 -> 4 `i s key_vals ]
+[i F5403
 :U ..
 :U ..
 -> -> 1 `i `uc
@@ -768,54 +1171,179 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"25
-[; ;main.c: 25: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
-{
-[e :U _main ]
-[f ]
-"26
-[; ;main.c: 26:     ports_init();
+[v F5405 `uc ~T0 @X0 -> 8 `i s ]
+[i F5405
+:U ..
+"32
+[; ;main.c: 32:     char message[] = "123*456";
+-> 49 `c
+-> 50 `c
+-> 51 `c
+-> 42 `c
+-> 52 `c
+-> 53 `c
+-> 54 `c
+-> 0 `c
+..
+]
+[v _message `uc ~T0 @X0 -> 8 `i a ]
+[e = _message F5405 ]
+"33
+[; ;main.c: 33:     ports_init();
 [e ( _ports_init ..  ]
-"28
-[; ;main.c: 28:     LATD = 0b10101010;
-[e = _LATD -> -> 170 `i `uc ]
-"29
-[; ;main.c: 29: }
-[e :UE 636 ]
+"34
+[; ;main.c: 34:     LCD_init();
+[e ( _LCD_init ..  ]
+"37
+[; ;main.c: 37:     while (1) {
+[e :U 660 ]
+{
+"38
+[; ;main.c: 38:         LCD_writeStr(message);
+[e ( _LCD_writeStr (1 &U _message ]
+"39
+[; ;main.c: 39:         LCD_newLine();
+[e ( _LCD_newLine ..  ]
+"42
+[; ;main.c: 42:         for (int i = 0; i < 15; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 15 `i 662  ]
+[e $U 663  ]
+[e :U 662 ]
+{
+"43
+[; ;main.c: 43:             LCD_cursor(0, 1);
+[e ( _LCD_cursor (2 , -> -> 0 `i `s -> -> 1 `i `s ]
+"44
+[; ;main.c: 44:         }
 }
-"31
-[; ;main.c: 31: void ports_init ( void ) {
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 15 `i 662  ]
+[e :U 663 ]
+}
+"47
+[; ;main.c: 47:         LCD_entryMode(0,0);
+[e ( _LCD_entryMode (2 , -> -> 0 `i `s -> -> 0 `i `s ]
+"48
+[; ;main.c: 48:         uint32_t result = 123L*456;
+[v _result `ul ~T0 @X0 1 a ]
+[e = _result -> * -> 123 `l -> -> 456 `i `l `ul ]
+"49
+[; ;main.c: 49:         printCalcResult(result);
+[e ( _printCalcResult (1 -> _result `l ]
+"50
+[; ;main.c: 50:         LCD_dispControl(1,0,0);
+[e ( _LCD_dispControl (3 , , -> -> 1 `i `s -> -> 0 `i `s -> -> 0 `i `s ]
+"51
+[; ;main.c: 51:         LCD_entryMode(1,0);
+[e ( _LCD_entryMode (2 , -> -> 1 `i `s -> -> 0 `i `s ]
+"52
+[; ;main.c: 52:         _delay((unsigned long)((2000)*(1000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
+"53
+[; ;main.c: 53:         LCD_dispControl(1, 1, 1);
+[e ( _LCD_dispControl (3 , , -> -> 1 `i `s -> -> 1 `i `s -> -> 1 `i `s ]
+"54
+[; ;main.c: 54:         LCD_clear();
+[e ( _LCD_clear ..  ]
+"55
+[; ;main.c: 55:     }
+}
+[e :U 659 ]
+[e $U 660  ]
+[e :U 661 ]
+"56
+[; ;main.c: 56: }
+[e :UE 658 ]
+}
+"58
+[; ;main.c: 58: void ports_init ( void ) {
 [v _ports_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _ports_init ]
 [f ]
-"32
-[; ;main.c: 32:     ANSELA = 0;
+"59
+[; ;main.c: 59:     ANSELA = 0;
 [e = _ANSELA -> -> 0 `i `uc ]
-"33
-[; ;main.c: 33:     TRISA = 0;
+"60
+[; ;main.c: 60:     TRISA = 0;
 [e = _TRISA -> -> 0 `i `uc ]
-"35
-[; ;main.c: 35:     ANSELB = 0;
+"61
+[; ;main.c: 61:     LATA = 0;
+[e = _LATA -> -> 0 `i `uc ]
+"63
+[; ;main.c: 63:     ANSELB = 0;
 [e = _ANSELB -> -> 0 `i `uc ]
-"36
-[; ;main.c: 36:     TRISB = 0b00001111;
+"64
+[; ;main.c: 64:     TRISB = 0b00001111;
 [e = _TRISB -> -> 15 `i `uc ]
-"38
-[; ;main.c: 38:     ANSELC = 0;
+"65
+[; ;main.c: 65:     LATB = 0;
+[e = _LATB -> -> 0 `i `uc ]
+"67
+[; ;main.c: 67:     ANSELC = 0;
 [e = _ANSELC -> -> 0 `i `uc ]
-"39
-[; ;main.c: 39:     TRISC = 0;
-[e = _TRISC -> -> 0 `i `uc ]
-"41
-[; ;main.c: 41:     ANSELD = 0;
+"68
+[; ;main.c: 68:     TRISCbits.TRISC0=0;
+[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
+"69
+[; ;main.c: 69:     TRISCbits.TRISC2=0;
+[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+"70
+[; ;main.c: 70:     TRISCbits.TRISC1=0;
+[e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
+"71
+[; ;main.c: 71:     LATC = 0;
+[e = _LATC -> -> 0 `i `uc ]
+"73
+[; ;main.c: 73:     ANSELD = 0;
 [e = _ANSELD -> -> 0 `i `uc ]
-"42
-[; ;main.c: 42:     TRISD = 0;
+"74
+[; ;main.c: 74:     TRISD = 0;
 [e = _TRISD -> -> 0 `i `uc ]
-"46
-[; ;main.c: 46: }
-[e :UE 637 ]
+"75
+[; ;main.c: 75:     LATD = 0;
+[e = _LATD -> -> 0 `i `uc ]
+"78
+[; ;main.c: 78: }
+[e :UE 665 ]
+}
+"80
+[; ;main.c: 80: void printCalcResult(long int result) {
+[v _printCalcResult `(v ~T0 @X0 1 ef1`l ]
+{
+[e :U _printCalcResult ]
+[v _result `l ~T0 @X0 1 r1 ]
+[f ]
+"81
+[; ;main.c: 81:     while (result) {
+[e $U 667  ]
+[e :U 668 ]
+{
+"82
+[; ;main.c: 82:         char modulo = result % 10;
+[v _modulo `uc ~T0 @X0 1 a ]
+[e = _modulo -> % _result -> -> 10 `i `l `uc ]
+"83
+[; ;main.c: 83:         modulo += 48;
+[e =+ _modulo -> -> 48 `i `uc ]
+"84
+[; ;main.c: 84:         LCD_writeChar(modulo);
+[e ( _LCD_writeChar (1 _modulo ]
+"85
+[; ;main.c: 85:         result /= 10;
+[e =/ _result -> -> 10 `i `l ]
+"86
+[; ;main.c: 86:     }
+}
+[e :U 667 ]
+"81
+[; ;main.c: 81:     while (result) {
+[e $ != _result -> -> 0 `i `l 668  ]
+[e :U 669 ]
+"87
+[; ;main.c: 87: }
+[e :UE 666 ]
 }
