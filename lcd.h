@@ -11,7 +11,6 @@
 #define	XC_HEADER_TEMPLATE_H
 
 #include <xc.h> // include processor files - each processor file is guarded.
-#include <stdio.h>
 #include <string.h>
 
 #define _XTAL_FREQ          1000000
@@ -121,7 +120,7 @@ void LCD_writeStr(char data[]) {
         Nop();
         LCD_EN = 0;
         Nop();
-        __delay_ms(100);
+        __delay_ms(50);
     }
 }
 

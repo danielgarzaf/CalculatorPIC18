@@ -36,13 +36,21 @@ void main(void)
     static char key_vals[4][4] = {{'1', '2', '3', '+'}, {'4', '5', '6', '-'}, {'7', '8', '9', '*'}, 
         {'R', '0', '#', '/'}};
     char operation = 0;
-    char opIdx1, opIdx2 = 0;
+    char opIdx1 = 0, opIdx2 = 0;
     char operators[14];
     ports_init();
     LCD_init();
     
+    // Welcome message
+    LCD_writeStr("Basic Calc.");
+    LCD_newLine();
+    LCD_writeStr("Ops: +, -, *, /");
+    __delay_ms(5000);
+    LCD_clear();
+    
     // Main loop
     while (1) {
+        
         // Waits until a key is pressed
         char key = getKey(key_vals);
         char val = getVal(key);
@@ -105,6 +113,7 @@ void printCalcResult(int32_t result)
     }
     
     LCD_entryMode(0,0);//               Entry Mode          (ID->0: Decrement, S->0: No Display shift)
+    
     char negativeFlag = 0;
     if (result < 0)
     {
@@ -170,16 +179,11 @@ int32_t calculate(char operation, char opIdx1, char opIdx2, char operators[])
         case '+':
             return operator1 + operator2;
         case '-':
-            if (operator2 > operator1){
-                int32_t result = operator2 - operator1;
-                result *= -1;
-                return result;
-            }
-            else
-                return operator1 - operator2;
+            return (int32_t) (operator1 - operator2);
         case '*':
             return operator1 * operator2;
         case '/':
             return operator1 / operator2;
     }
+    return 0;
 }
