@@ -21,10 +21,10 @@
 [v _LCD_cmd LCD_cmd `(v  1 e 1 0 ]
 "91
 [v _LCD_rdy LCD_rdy `(v  1 e 1 0 ]
-"110
-[v _LCD_writeStr LCD_writeStr `(v  1 e 1 0 ]
 "128
 [v _LCD_writeChar LCD_writeChar `(v  1 e 1 0 ]
+"7 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
 "7 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
 "7 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\almod.c
@@ -55,12 +55,18 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"29 C:\Users\danie\MPLABXProjects\Calculadora.X\main.c
+"33 C:\Users\danie\MPLABXProjects\Calculadora.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"48
+"73
 [v _ports_init ports_init `(v  1 e 1 0 ]
-"70
+"98
 [v _printCalcResult printCalcResult `(v  1 e 1 0 ]
+"126
+[v _getKey getKey `(uc  1 e 1 0 ]
+"150
+[v _getVal getVal `(uc  1 e 1 0 ]
+"156
+[v _calculate calculate `(l  1 e 4 0 ]
 "232 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f45k50.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3931 ]
 "277
@@ -69,6 +75,8 @@
 [v _ANSELC ANSELC `VEuc  1 e 1 @3933 ]
 "361
 [v _ANSELD ANSELD `VEuc  1 e 1 @3934 ]
+"3053
+[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
 [s S57 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
@@ -104,6 +112,8 @@
 [v _PORTCbits PORTCbits `VES87  1 e 1 @3970 ]
 "3305
 [v _PORTD PORTD `VEuc  1 e 1 @3971 ]
+"3545
+[v _WPUB WPUB `VEuc  1 e 1 @3973 ]
 "3779
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
 "3891
@@ -116,7 +126,7 @@
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "4848
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
-[s S158 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S179 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -126,32 +136,51 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "5100
-[s S167 . 1 `uc 1 RC0 1 0 :1:0 
+[s S188 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S174 . 1 `S158 1 . 1 0 `S167 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES174  1 e 1 @3988 ]
+[u S195 . 1 `S179 1 . 1 0 `S188 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES195  1 e 1 @3988 ]
 "5248
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-"29 C:\Users\danie\MPLABXProjects\Calculadora.X\main.c
+"13148
+[v _INTCON2 INTCON2 `VEuc  1 e 1 @4081 ]
+"33 C:\Users\danie\MPLABXProjects\Calculadora.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"46
-} 0
+"56
+[v main@result result `l  1 a 4 49 ]
+"47
+[v main@key key `uc  1 a 1 57 ]
+"48
+[v main@val val `uc  1 a 1 53 ]
+"40
+[v main@operators operators `[14]uc  1 a 14 35 ]
+"39
+[v main@opIdx1 opIdx1 `uc  1 a 1 56 ]
+[v main@opIdx2 opIdx2 `uc  1 a 1 55 ]
+"38
+[v main@operation operation `uc  1 a 1 54 ]
+"36
+[v main@key_vals key_vals `[4][4]uc  1 s 16 key_vals ]
 "70
+} 0
+"98
 [v _printCalcResult printCalcResult `(v  1 e 1 0 ]
 {
-"77
-[v printCalcResult@modulo modulo `uc  1 a 1 20 ]
-"72
-[v printCalcResult@i i `i  1 a 2 21 ]
-"70
+"115
+[v printCalcResult@modulo modulo `uc  1 a 1 19 ]
+"103
+[v printCalcResult@i i `i  1 a 2 20 ]
+"108
+[v printCalcResult@negativeFlag negativeFlag `uc  1 a 1 18 ]
+"98
 [v printCalcResult@result result `l  1 p 4 14 ]
-"84
+"123
 } 0
 "7 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\almod.c
 [v ___almod __almod `(l  1 e 4 0 ]
@@ -185,6 +214,11 @@
 [v LCD_writeChar@data data `uc  1 a 1 1 ]
 "139
 } 0
+"75
+[v _LCD_newLine LCD_newLine `(v  1 e 1 0 ]
+{
+"77
+} 0
 "67
 [v _LCD_cursor LCD_cursor `(v  1 e 1 0 ]
 {
@@ -192,37 +226,87 @@
 [v LCD_cursor@RL RL `s  1 p 2 4 ]
 "69
 } 0
-"48 C:\Users\danie\MPLABXProjects\Calculadora.X\main.c
+"73 C:\Users\danie\MPLABXProjects\Calculadora.X\main.c
 [v _ports_init ports_init `(v  1 e 1 0 ]
 {
-"68
+"95
 } 0
-"110 C:\Users\danie\MPLABXProjects\Calculadora.X/lcd.h
-[v _LCD_writeStr LCD_writeStr `(v  1 e 1 0 ]
+"150
+[v _getVal getVal `(uc  1 e 1 0 ]
 {
-"117
-[v LCD_writeStr@i i `i  1 a 2 10 ]
-"116
-[v LCD_writeStr@length length `s  1 a 2 8 ]
-"110
-[v LCD_writeStr@data data `*.32uc  1 p 2 4 ]
+[v getVal@key key `uc  1 a 1 wreg ]
+[v getVal@key key `uc  1 a 1 wreg ]
+"152
+[v getVal@key key `uc  1 a 1 0 ]
+"153
+} 0
 "126
-} 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\strlen.c
-[v _strlen strlen `(ui  1 e 2 0 ]
+[v _getKey getKey `(uc  1 e 1 0 ]
 {
+"136
+[v getKey@cols cols `uc  1 a 1 7 ]
+"135
+[v getKey@j j `i  1 a 2 13 ]
+"133
+[v getKey@bit_cols bit_cols `uc  1 a 1 10 ]
+"132
+[v getKey@rows rows `uc  1 a 1 8 ]
+"131
+[v getKey@i i `i  1 a 2 11 ]
+"129
+[v getKey@bit_rows bit_rows `uc  1 a 1 9 ]
+"130
+[v getKey@value value `uc  1 a 1 6 ]
+"126
+[v getKey@key_vals key_vals `*.39[4]uc  1 p 2 0 ]
+"147
+} 0
+"156
+[v _calculate calculate `(l  1 e 4 0 ]
+{
+[v calculate@operation operation `uc  1 a 1 wreg ]
+"174
+[v calculate@result result `l  1 a 4 20 ]
+"164
+[v calculate@i_307 i `uc  1 a 1 25 ]
+"160
+[v calculate@i i `uc  1 a 1 24 ]
+"159
+[v calculate@operator2 operator2 `ul  1 a 4 30 ]
+"158
+[v calculate@operator1 operator1 `ul  1 a 4 26 ]
+"156
+[v calculate@operation operation `uc  1 a 1 wreg ]
+[v calculate@opIdx1 opIdx1 `uc  1 p 1 13 ]
+[v calculate@opIdx2 opIdx2 `uc  1 p 1 14 ]
+[v calculate@operators operators `*.39uc  1 p 2 15 ]
+"158
+[v calculate@operation operation `uc  1 a 1 19 ]
+"185
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 8 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 0 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
+"129
+} 0
+"7 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 12 ]
 "7
-[v strlen@a a `*.32Cuc  1 a 2 2 ]
-"5
-[v strlen@s s `*.32Cuc  1 p 2 0 ]
-"12
+[v ___lldiv@dividend dividend `ul  1 p 4 0 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
+"30
 } 0
-"75 C:\Users\danie\MPLABXProjects\Calculadora.X/lcd.h
-[v _LCD_newLine LCD_newLine `(v  1 e 1 0 ]
-{
-"77
-} 0
-"44
+"44 C:\Users\danie\MPLABXProjects\Calculadora.X/lcd.h
 [v _LCD_init LCD_init `(v  1 e 1 0 ]
 {
 "49

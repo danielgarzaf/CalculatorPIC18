@@ -2,6 +2,7 @@
 // PIC18F45K50 Configuration Bit Settings
 
 // 'C' source line config statements
+#include <htc.h>
 // CONFIG1L
 #pragma config PLLSEL = PLL4X   // PLL Selection (4x clock multiplier)
 #pragma config CFGPLLEN = OFF   // PLL Enable Configuration bit (PLL Disabled (firmware controlled))

@@ -121,7 +121,7 @@ void LCD_writeStr(char data[]) {
         Nop();
         LCD_EN = 0;
         Nop();
-        __delay_ms(250);
+        __delay_ms(100);
     }
 }
 

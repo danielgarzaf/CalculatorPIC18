@@ -19,72 +19,7 @@
 
 
 
-
-#pragma config PLLSEL = PLL4X
-#pragma config CFGPLLEN = OFF
-#pragma config CPUDIV = NOCLKDIV
-#pragma config LS48MHZ = SYS24X4
-
-
-#pragma config FOSC = INTOSCIO
-#pragma config PCLKEN = ON
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-
-
-#pragma config nPWRTEN = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 190
-#pragma config nLPBOR = OFF
-
-
-#pragma config WDTEN = OFF
-#pragma config WDTPS = 32768
-
-
-#pragma config CCP2MX = RC1
-#pragma config PBADEN = ON
-#pragma config T3CMX = RC0
-#pragma config SDOMX = RB3
-#pragma config MCLRE = ON
-
-
-#pragma config STVREN = ON
-#pragma config LVP = ON
-#pragma config ICPRT = OFF
-#pragma config XINST = OFF
-
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-
-#pragma config EBTRB = OFF
-
-
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 1 3
 
 
 
@@ -195,13 +130,6 @@ extern void __builtin_software_breakpoint(void);
 
 
 
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 1 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 2 3
-# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18.h" 2 3
 
 
 
@@ -8079,7 +8007,73 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 73 "./config_bits.h" 2
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 2 3
+# 5 "./config_bits.h" 2
+
+
+#pragma config PLLSEL = PLL4X
+#pragma config CFGPLLEN = OFF
+#pragma config CPUDIV = NOCLKDIV
+#pragma config LS48MHZ = SYS24X4
+
+
+#pragma config FOSC = INTOSCIO
+#pragma config PCLKEN = ON
+#pragma config FCMEN = OFF
+#pragma config IESO = OFF
+
+
+#pragma config nPWRTEN = OFF
+#pragma config BOREN = SBORDIS
+#pragma config BORV = 190
+#pragma config nLPBOR = OFF
+
+
+#pragma config WDTEN = OFF
+#pragma config WDTPS = 32768
+
+
+#pragma config CCP2MX = RC1
+#pragma config PBADEN = ON
+#pragma config T3CMX = RC0
+#pragma config SDOMX = RB3
+#pragma config MCLRE = ON
+
+
+#pragma config STVREN = ON
+#pragma config LVP = ON
+#pragma config ICPRT = OFF
+#pragma config XINST = OFF
+
+
+#pragma config CP0 = OFF
+#pragma config CP1 = OFF
+#pragma config CP2 = OFF
+#pragma config CP3 = OFF
+
+
+#pragma config CPB = OFF
+#pragma config CPD = OFF
+
+
+#pragma config WRT0 = OFF
+#pragma config WRT1 = OFF
+#pragma config WRT2 = OFF
+#pragma config WRT3 = OFF
+
+
+#pragma config WRTC = OFF
+#pragma config WRTB = OFF
+#pragma config WRTD = OFF
+
+
+#pragma config EBTR0 = OFF
+#pragma config EBTR1 = OFF
+#pragma config EBTR2 = OFF
+#pragma config EBTR3 = OFF
+
+
+#pragma config EBTRB = OFF
 # 8 "main.c" 2
 
 # 1 "./lcd.h" 1
@@ -8375,7 +8369,7 @@ void LCD_writeStr(char data[]) {
         __nop();
         PORTCbits.RC0 = 0;
         __nop();
-        _delay((unsigned long)((250)*(1000000/4000.0)));
+        _delay((unsigned long)((100)*(1000000/4000.0)));
     }
 }
 
@@ -8484,8 +8478,8 @@ typedef uint32_t uint_fast32_t;
 
 
 
-enum por_dir{ output = 0, input = 1 };
-enum por_ACDC{ digital = 0, analog = 1 };
+enum port_dir{ output = 0, input = 1 };
+enum port_ACDC{ digital = 0, analog = 1 };
 enum resistor_state{ set_ON = 0, res_ON = 1 };
 enum led_state{ led_OFF = 0, led_ON = 1 };
 enum butto_state{pushed = 0, no_pushed = 1};
@@ -8494,28 +8488,54 @@ enum exponent {bbase=2, limit=8};
 
 
 void ports_init(void);
-void printCalcResult(long int result);
+void printCalcResult(int32_t result);
+char getKey(char key_vals[4][4]);
+char getVal(char key);
+int32_t calculate(char operation, char opIdx1, char opIdx2, char operators[]);
 
-void main(void) {
-    static char key_vals[4][4] = {{1, 2, 3, 10}, {4, 5, 6, 11}, {7, 8, 9, 12},
-        {14, 0, 15, 13}};
+
+void main(void)
+{
+
+    static char key_vals[4][4] = {{'1', '2', '3', '+'}, {'4', '5', '6', '-'}, {'7', '8', '9', '*'},
+        {'R', '0', '#', '/'}};
+    char operation = 0;
+    char opIdx1, opIdx2 = 0;
+    char operators[14];
     ports_init();
     LCD_init();
 
 
     while (1) {
-        LCD_writeStr("1234*5678");
-        LCD_newLine();
 
+        char key = getKey(key_vals);
+        char val = getVal(key);
 
-        int32_t result = 1234L*5678;
-        printCalcResult(result);
-
-        LCD_init();
+        if (key == '+' || key == '-' || key == '*' || key == '/') {
+            LCD_writeChar(key);
+            operation = key;
+            opIdx2 = opIdx1;
+        }
+        else if (key == '#') {
+            int32_t result = calculate(operation, opIdx1, opIdx2, operators);
+            printCalcResult(result);
+        }
+        else if (key == 'R') {
+           LCD_init();
+           operation = 0, opIdx1 = 0, opIdx2 = 0;
+        }
+        else {
+            LCD_writeChar(key);
+            if (operation) operators[opIdx2++] = val;
+            else operators[opIdx1++] = val;
+        }
+        _delay((unsigned long)((200)*(1000000/4000.0)));
     }
 }
 
-void ports_init ( void ) {
+
+void ports_init ( void )
+{
     ANSELA = 0;
     TRISA = 0;
     LATA = 0;
@@ -8523,6 +8543,9 @@ void ports_init ( void ) {
     ANSELB = 0;
     TRISB = 0b00001111;
     LATB = 0;
+    INTCON2 = 0b00000000;
+    WPUB = 0b00001111;;
+
 
     ANSELC = 0;
     TRISCbits.TRISC0=0;
@@ -8533,22 +8556,94 @@ void ports_init ( void ) {
     ANSELD = 0;
     TRISD = 0;
     LATD = 0;
-
-
 }
 
-void printCalcResult(long int result) {
+
+void printCalcResult(int32_t result)
+{
+    LCD_newLine();
+
 
     for (int i = 0; i < 15; i++) {
         LCD_cursor(0, 1);
     }
+
     LCD_entryMode(0,0);
+    char negativeFlag = 0;
+    if (result < 0)
+    {
+        result *= -1;
+        negativeFlag = 1;
+    }
     while (result) {
         char modulo = result % 10;
         modulo += 48;
         LCD_writeChar(modulo);
         result /= 10;
     }
+    if (negativeFlag) LCD_writeChar('-');
+
     LCD_dispControl(1,0,0);
-    _delay((unsigned long)((2000)*(1000000/4000.0)));
+}
+
+
+char getKey(char key_vals[4][4])
+{
+    while (1) {
+        char bit_rows = 0b10000000;
+        char value;
+        for (int i = 0; i < 4; i++) {
+            char rows = ~bit_rows & 0b11110000;
+            char bit_cols = 0b00001000;
+            LATB = rows | 0b00001111;
+            for (int j = 0; j < 4; j++) {
+                char cols = ~bit_cols & 0b00001111;
+                value = rows | cols;
+                if (PORTB == value) {
+                    LATA = (PORTB & 0b00001111) << 4;
+                    return key_vals[i][j];
+                }
+                bit_cols = bit_cols >> 1;
+            }
+            bit_rows = bit_rows >> 1;
+        }
+    }
+}
+
+
+char getVal(char key)
+{
+    return key - 48;
+}
+
+
+int32_t calculate(char operation, char opIdx1, char opIdx2, char operators[])
+{
+    uint32_t operator1 = 0;
+    uint32_t operator2 = 0;
+    for (char i = 0; i < opIdx1; i++) {
+        operator1 *= 10;
+        operator1 += operators[i];
+    }
+    for (char i = opIdx1; i < opIdx2; i++) {
+        operator2 *= 10;
+        operator2 += operators[i];
+    }
+    switch (operation)
+    {
+        case '+':
+            return operator1 + operator2;
+        case '-':
+            if (operator2 > operator1){
+                int32_t result = operator2 - operator1;
+                result *= -1;
+                return result;
+            }
+            else
+                return operator1 - operator2;
+        case '*':
+            return operator1 * operator2;
+        case '/':
+            return operator1 / operator2;
+    }
 }
