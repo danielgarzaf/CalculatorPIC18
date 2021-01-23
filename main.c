@@ -4,12 +4,14 @@
  *
  * Created on November 15, 2020, 3:15 PM
  */
-
+#include <stdint.h>
 #include "config_bits.h"
 #include "lcd.h"
-#include <stdint.h>
 
+
+#ifndef _XTAL_FREQ
 #define _XTAL_FREQ          1000000
+#endif
 #define TWO_SECONDS         2000
 #define DELAY_SWEEP         150
 
@@ -33,8 +35,8 @@ int32_t calculate(char operation, char opIdx1, char opIdx2, char operators[]);
 void main(void) 
 {
     // Constants, Variables and Setup
-    static char key_vals[4][4] = {{'1', '2', '3', '+'}, {'4', '5', '6', '-'}, {'7', '8', '9', '*'}, 
-        {'R', '0', '#', '/'}};
+    static char key_vals[4][4] = {{'1', '2', '3', '+'}, {'4', '5', '6', '-'}, 
+        {'7', '8', '9', '*'}, {'R', '0', '#', '/'}};
     char operation = 0;
     char opIdx1 = 0, opIdx2 = 0;
     char operators[14];

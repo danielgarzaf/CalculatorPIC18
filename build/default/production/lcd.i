@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "lcd.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,128 +6,16 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "lcd.c" 2
 
 
 
 
 
 
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 1 3
 
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\musl_xc8.h" 1 3
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
-# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 127 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uintptr_t;
-# 142 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long intptr_t;
-# 158 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef signed char int8_t;
-
-
-
-
-typedef short int16_t;
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-typedef long int32_t;
-
-
-
-
-
-typedef long long int64_t;
-# 188 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long intmax_t;
-
-
-
-
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-typedef unsigned long uint32_t;
-
-
-
-
-
-typedef unsigned long long uint64_t;
-# 229 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long long uintmax_t;
-# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
-
-
-typedef int8_t int_fast8_t;
-
-typedef int64_t int_fast64_t;
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-
-typedef int24_t int_least24_t;
-
-typedef int32_t int_least32_t;
-
-typedef int64_t int_least64_t;
-
-
-typedef uint8_t uint_fast8_t;
-
-typedef uint64_t uint_fast64_t;
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-
-typedef uint24_t uint_least24_t;
-
-typedef uint32_t uint_least32_t;
-
-typedef uint64_t uint_least64_t;
-# 139 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/stdint.h" 1 3
-typedef int32_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint32_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 139 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
-# 7 "main.c" 2
-
-# 1 "./config_bits.h" 1
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 1 3
-
-
-
+# 1 "./lcd.h" 1
+# 13 "./lcd.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -141,7 +29,17 @@ extern double __fpnormalize(double);
 
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 1 3
-# 10 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\musl_xc8.h" 1 3
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
+
+
+
+
+
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\features.h" 1 3
 # 10 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
 # 21 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 3
@@ -150,6 +48,10 @@ extern double __fpnormalize(double);
 typedef long int wchar_t;
 # 122 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
 typedef unsigned size_t;
+# 168 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 204 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __uint24 uint24_t;
 # 21 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
 
 
@@ -221,6 +123,13 @@ extern void __builtin_software_breakpoint(void);
 
 
 
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 1 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 2 3
+# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18.h" 2 3
 
 
 
@@ -8098,77 +8007,8 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 2 3
-# 5 "./config_bits.h" 2
+# 13 "./lcd.h" 2
 
-
-#pragma config PLLSEL = PLL4X
-#pragma config CFGPLLEN = OFF
-#pragma config CPUDIV = NOCLKDIV
-#pragma config LS48MHZ = SYS24X4
-
-
-#pragma config FOSC = INTOSCIO
-#pragma config PCLKEN = ON
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-
-
-#pragma config nPWRTEN = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 190
-#pragma config nLPBOR = OFF
-
-
-#pragma config WDTEN = OFF
-#pragma config WDTPS = 32768
-
-
-#pragma config CCP2MX = RC1
-#pragma config PBADEN = ON
-#pragma config T3CMX = RC0
-#pragma config SDOMX = RB3
-#pragma config MCLRE = ON
-
-
-#pragma config STVREN = ON
-#pragma config LVP = ON
-#pragma config ICPRT = OFF
-#pragma config XINST = OFF
-
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-
-#pragma config EBTRB = OFF
-# 8 "main.c" 2
-
-# 1 "./lcd.h" 1
-# 14 "./lcd.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\string.h" 1 3
 # 25 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\string.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -8238,178 +8078,102 @@ void LCD_cmd(char cmd);
 void LCD_rdy(void);
 void LCD_writeStr(char data[]);
 void LCD_writeChar(char data);
-# 9 "main.c" 2
-# 19 "main.c"
-enum port_dir{ output = 0, input = 1 };
-enum port_ACDC{ digital = 0, analog = 1 };
-enum resistor_state{ set_ON = 0, res_ON = 1 };
-enum led_state{ led_OFF = 0, led_ON = 1 };
-enum butto_state{pushed = 0, no_pushed = 1};
-enum exponent {bbase=2, limit=8};
+# 8 "lcd.c" 2
 
 
-
-void ports_init(void);
-void printCalcResult(int32_t result);
-char getKey(char key_vals[4][4]);
-char getVal(char key);
-int32_t calculate(char operation, char opIdx1, char opIdx2, char operators[]);
-
-
-void main(void)
-{
-
-    static char key_vals[4][4] = {{'1', '2', '3', '+'}, {'4', '5', '6', '-'}, {'7', '8', '9', '*'},
-        {'R', '0', '#', '/'}};
-    char operation = 0;
-    char opIdx1 = 0, opIdx2 = 0;
-    char operators[14];
-    ports_init();
-    LCD_init();
-
-
-    LCD_writeStr("Basic Calc.");
-    LCD_newLine();
-    LCD_writeStr("Ops: +, -, *, /");
-    _delay((unsigned long)((5000)*(1000000/4000.0)));
+void LCD_init(void) {
     LCD_clear();
+    LCD_functionSet(1, 1, 0);
+    LCD_dispControl(1, 1, 1);
+    LCD_entryMode(1, 0);
+}
+
+void LCD_clear(void) {
+    LCD_cmd(0b00000001);
+}
+
+void LCD_returnHome(void) {
+    LCD_cmd(0b00000010);
+}
+
+void LCD_entryMode(short int ID, short int SH) {
+    LCD_cmd(0b00000100 | ID << 1 | SH);
+}
+
+void LCD_dispControl(short int D, short int C, short int B) {
+    LCD_cmd(0b00001000 | D << 2 | C << 1 | B);
+}
+
+void LCD_cursor(short int SC, short int RL) {
+    LCD_cmd(0b00010000 | SC << 3 | RL << 2);
+}
+
+void LCD_functionSet(short int DL, short int N, short int F) {
+    LCD_cmd(0b00100000 | DL << 4 | N << 3 | F << 2);
+}
+
+void LCD_newLine() {
+    LCD_cmd(0xC0);
+}
+
+void LCD_cmd (char cmd) {
+    LCD_rdy();
+    PORTCbits.RC2=0;
+    PORTCbits.RC1=0;
+    PORTCbits.RC0=1;
+    __nop();
+    LATD = cmd;
+    __nop();
+    PORTCbits.RC0=0;
+    __nop();
+}
+
+void LCD_rdy (void) {
+    char busy = 0x80;
+    TRISD = 0b11111111;
+    PORTCbits.RC2 = 0;
+    PORTCbits.RC1 = 1;
 
 
-    while (1) {
+    while (busy) {
+        PORTCbits.RC0 = 1;
+        __nop();
+        busy = PORTD & 0x80;
+        __nop();
+        PORTCbits.RC0 = 0;
+        __nop();
+    }
+
+    TRISD = 0b00000000;
+}
+
+void LCD_writeStr(char data[]) {
+    LCD_rdy();
+    PORTCbits.RC2 = 1;
+    PORTCbits.RC1 = 0;
 
 
-        char key = getKey(key_vals);
-        char val = getVal(key);
-
-        if (key == '+' || key == '-' || key == '*' || key == '/') {
-            LCD_writeChar(key);
-            operation = key;
-            opIdx2 = opIdx1;
-        }
-        else if (key == '#') {
-            int32_t result = calculate(operation, opIdx1, opIdx2, operators);
-            printCalcResult(result);
-        }
-        else if (key == 'R') {
-           LCD_init();
-           operation = 0, opIdx1 = 0, opIdx2 = 0;
-        }
-        else {
-            LCD_writeChar(key);
-            if (operation) operators[opIdx2++] = val;
-            else operators[opIdx1++] = val;
-        }
-        _delay((unsigned long)((200)*(1000000/4000.0)));
+    short int length = strlen(data);
+    for (int i = 0; i < length; i++){
+        PORTCbits.RC0 = 1;
+        __nop();
+        LATD = data[i];
+        __nop();
+        PORTCbits.RC0 = 0;
+        __nop();
+        _delay((unsigned long)((50)*(1000000/4000.0)));
     }
 }
 
+void LCD_writeChar(char data) {
+    LCD_rdy();
+    PORTCbits.RC2 = 1;
+    PORTCbits.RC1 = 0;
 
-void ports_init ( void )
-{
-    ANSELA = 0;
-    TRISA = 0;
-    LATA = 0;
-
-    ANSELB = 0;
-    TRISB = 0b00001111;
-    LATB = 0;
-    INTCON2 = 0b00000000;
-    WPUB = 0b00001111;;
-
-
-    ANSELC = 0;
-    TRISCbits.TRISC0=0;
-    TRISCbits.TRISC2=0;
-    TRISCbits.TRISC1=0;
-    LATC = 0;
-
-    ANSELD = 0;
-    TRISD = 0;
-    LATD = 0;
-}
-
-
-void printCalcResult(int32_t result)
-{
-    LCD_newLine();
-
-
-    for (int i = 0; i < 15; i++) {
-        LCD_cursor(0, 1);
-    }
-
-    LCD_entryMode(0,0);
-
-    char negativeFlag = 0;
-    if (result < 0)
-    {
-        result *= -1;
-        negativeFlag = 1;
-    }
-    while (result) {
-        char modulo = result % 10;
-        modulo += 48;
-        LCD_writeChar(modulo);
-        result /= 10;
-    }
-    if (negativeFlag) LCD_writeChar('-');
-
-    LCD_dispControl(1,0,0);
-}
-
-
-char getKey(char key_vals[4][4])
-{
-    while (1) {
-        char bit_rows = 0b10000000;
-        char value;
-        for (int i = 0; i < 4; i++) {
-            char rows = ~bit_rows & 0b11110000;
-            char bit_cols = 0b00001000;
-            LATB = rows | 0b00001111;
-            for (int j = 0; j < 4; j++) {
-                char cols = ~bit_cols & 0b00001111;
-                value = rows | cols;
-                if (PORTB == value) {
-                    LATA = (PORTB & 0b00001111) << 4;
-                    return key_vals[i][j];
-                }
-                bit_cols = bit_cols >> 1;
-            }
-            bit_rows = bit_rows >> 1;
-        }
-    }
-}
-
-
-char getVal(char key)
-{
-    return key - 48;
-}
-
-
-int32_t calculate(char operation, char opIdx1, char opIdx2, char operators[])
-{
-    uint32_t operator1 = 0;
-    uint32_t operator2 = 0;
-    for (char i = 0; i < opIdx1; i++) {
-        operator1 *= 10;
-        operator1 += operators[i];
-    }
-    for (char i = opIdx1; i < opIdx2; i++) {
-        operator2 *= 10;
-        operator2 += operators[i];
-    }
-    switch (operation)
-    {
-        case '+':
-            return operator1 + operator2;
-        case '-':
-            return (int32_t) (operator1 - operator2);
-        case '*':
-            return operator1 * operator2;
-        case '/':
-            return operator1 / operator2;
-    }
-    return 0;
+    PORTCbits.RC0 = 1;
+    __nop();
+    LATD = data;
+    __nop();
+    PORTCbits.RC0 = 0;
+    __nop();
 }
