@@ -1,0 +1,9 @@
+debug/**
+dist/**
+build/**
+**.X.**
+*.i
+*.p1
+*.d
+*.xml
+
