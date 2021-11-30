@@ -79,14 +79,9 @@ void lcd_write_str(char data[]) {
     LCD_RW = 0;
     
     // Write each character in string
-    short int length = strlen(data);
+    int length = strlen(data);
     for (int i = 0; i < length; i++){
-        LCD_EN = 1;
-        Nop();
-        LCD_DATA_W = data[i];
-        Nop();
-        LCD_EN = 0;
-        Nop();
+        lcd_write_char(data[i]);
         __delay_ms(50);
     }
 }
