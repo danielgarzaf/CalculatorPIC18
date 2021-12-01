@@ -74,10 +74,6 @@ void lcd_rdy (void) {
 }
 
 void lcd_write_str(char data[]) {
-    lcd_rdy();
-    LCD_RS = 1;    
-    LCD_RW = 0;
-    
     // Write each character in string
     int length = strlen(data);
     for (int i = 0; i < length; i++){
