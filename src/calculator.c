@@ -35,32 +35,32 @@ int8_t get_val(int8_t key)
     return key - 48;
 }
 
-int32_t calculate(int8_t operation, int8_t op_idx_1, int8_t op_idx_2, int8_t operators[]) 
+int32_t calculate(int8_t operation, int8_t op1_idx, int8_t op2_idx, int8_t operators[]) 
 {
-    uint16_t operator1 = 0;
-    uint16_t operator2 = 0;
-    for (int8_t i = 0; i < op_idx_1; i++) {
-        operator1 *= 10;
-        operator1 += operators[i];
+    uint16_t op1 = 0;
+    uint16_t op2 = 0;
+    for (int8_t i = 0; i < op1_idx; i++) {
+        op1 *= 10;
+        op1 += operators[i];
     }
-    for (int8_t i = op_idx_1; i < op_idx_2; i++) {
-        operator2 *= 10;
-        operator2 += operators[i];
+    for (int8_t i = op1_idx; i < op2_idx; i++) {
+        op2 *= 10;
+        op2 += operators[i];
     }
     
-    return get_calculation(operation, operator1, operator2);
+    return get_calculation(operation, op1, op2);
 }
 
-int32_t get_calculation(int8_t operation, uint16_t operator_1, uint16_t operator_2) {
+int32_t get_calculation(int8_t operation, uint16_t op1, uint16_t op2) {
     switch (operation)
     {
         case '+':
-            return (int32_t) operator_1 + (int32_t) operator_2;
+            return (int32_t) op1 + (int32_t) op2;
         case '-':
-            return (int32_t) operator_1 - (int32_t) operator_2;
+            return (int32_t) op1 - (int32_t) op2;
         case '*':
-            return (int32_t) operator_1 * (int32_t) operator_2;
+            return (int32_t) op1 * (int32_t) op2;
         case '/':
-            return (int32_t) operator_1 / (int32_t) operator_2;
+            return (int32_t) op1 / (int32_t) op2;
     }
 }
